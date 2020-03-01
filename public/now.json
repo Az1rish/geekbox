@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "alias": "geekbox",
     "name": "geekbox",
     "routes": [
         { "handle": "filesystem" },
