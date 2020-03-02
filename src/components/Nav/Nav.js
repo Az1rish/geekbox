@@ -7,7 +7,7 @@ class Nav extends Component {
         return (
             <nav className="navBar">
                 <h1>GeekBox</h1>
-                <span>
+                <span className="links">
                     <Link to='/home'>
                         Home
                     </Link>
