@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer'
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <main className="App__main">
           Some content
         </main>
+        <Footer />
       </div>
     );
   }
