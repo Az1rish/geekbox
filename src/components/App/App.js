@@ -10,6 +10,7 @@ import RegisterPage from '../../routes/RegisterPage/RegisterPage';
 import ResourceListPage from '../../routes/ResourceListPage/ResourceListPage';
 import ResourcePage from '../../routes/ResourcePage/ResourcePage';
 import SignInPage from '../../routes/SignInPage/SignInPage';
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import './App.css';
 
 class App extends Component {
@@ -54,6 +55,9 @@ class App extends Component {
             <Route
               path='/resource/add'
               component={AddResourcePage}
+            />
+            <Route
+              component={NotFoundPage}
             />
           </Switch>
         </main>
