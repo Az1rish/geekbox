@@ -11,6 +11,16 @@ export default class RegistrationForm extends Component {
         onRegister: () => {}
     };
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { onRegister } = this.props;
+
+        onRegister();
+
+        // Add post user function here to post to db
+    }
+
     render() {
         return (
             <form className="RegistrationForm">
@@ -28,6 +38,34 @@ export default class RegistrationForm extends Component {
                         required
                     />
                 </div>
+                <div className="user_name">
+                    <label htmlFor="RegistrationForm__user_name">
+                        User Name
+                    </label>
+                    <input
+                        name="user_name"
+                        type="text"
+                        id="RegistrationForm__user_name"
+                        required
+                    />
+                </div>
+                <div className="password">
+                    <label htmlFor="RegistrationForm__password">
+                        Password
+                    </label>
+                    <input
+                        name="password"
+                        type="password"
+                        id="RegistrationForm__password"
+                        required
+                    />
+                    <p className="passwordInstruction">
+                        Password must contain at least 1 uppercase letter, 1 lower case letter and 1 number, be at least 8 characters long and contain no spaces
+                    </p>
+                </div>
+                <button type="submit">
+                    Register
+                </button>
             </form> 
         )
     }
