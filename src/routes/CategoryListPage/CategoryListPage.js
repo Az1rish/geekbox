@@ -15,9 +15,9 @@ export default class CategoryListPage extends Component {
 
     render() {
         return (
-            <section list className="CategoryListPage">
+            <ul className="CategoryListPage">
                 {this.renderCategories()}
-            </section>
+            </ul>
         );
     }
 }
