@@ -6,7 +6,9 @@ import './SignInPage.css';
 
 class SignInPage extends Component {
     static propTypes = {
-        history: PropTypes.shape
+        history: PropTypes.shape({
+            push: PropTypes.func
+        })
     };
 
     static defaultProps = {

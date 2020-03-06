@@ -108,4 +108,4 @@ const Store = {
     ]
 };
 
-export default { Store };
+export default Store;

@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import './RegisterPage.css';
 
 class RegisterPage extends Component {
+    static propTypes = {
+        history: PropTypes.shape({
+            push: PropTypes.func
+        })
+    };
+
     static defaultProps = {
         history: {
             push: () => {}
