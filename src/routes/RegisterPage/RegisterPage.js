@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import './RegisterPage.css';
 
-export default class RegisterPage extends Component {
+class RegisterPage extends Component {
     static defaultProps = {
         history: {
             push: () => {}
@@ -25,3 +26,5 @@ export default class RegisterPage extends Component {
         );
     }
 }
+
+export default withRouter(RegisterPage);
