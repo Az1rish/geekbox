@@ -5,9 +5,14 @@ import Category from './Category';
 
 test('renders without crashing', () => {
   const div = document.createElement('div');
+  const category = {
+    id: 1,
+    title: 'JavaScript',
+    userId: 1
+}
   ReactDOM.render(
     <BrowserRouter>
-        <Category />
+        <Category category={category}/>
     </BrowserRouter>, 
       div
   );
