@@ -23,12 +23,12 @@ class AddCategoryPage extends Component {
     }
 
     render() {
-        // const { updateList } = this.props.location.state;
-        console.log(this.props);
+        const { updateList } = this.props.location;
+        console.log(updateList);
         return (
             <section className='AddCategoryPage'>
                 <h2>Add Category</h2>
-                {/* <AddCategoryForm onAddCategorySuccess={this.onAddCategory} updateList={updateList} /> */}
+                <AddCategoryForm onAddCategorySuccess={this.onAddCategory} updateList={updateList} />
             </section>
         )
     }

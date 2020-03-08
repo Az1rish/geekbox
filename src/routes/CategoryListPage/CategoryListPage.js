@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Category from '../../components/Category/Category';
 import { v4 as uuidv4 } from 'uuid';
 import Store from '../../STORE';
 import './CategoryListPage.css';
 
-export default class CategoryListPage extends Component {
+class CategoryListPage extends Component {
     constructor(props) {
         super(props)
     
@@ -13,9 +13,19 @@ export default class CategoryListPage extends Component {
             categories: Store.categories
         }
     }
+
+    componentDidMount() {
+        this._isMounted = true;
+      }
+    
+      componentWillUnmount() {
+        this._isMounted = false;
+      }
     
     renderCategories() {
-        return this.state.categories.map((category) => (
+        const { categories } = this.state;
+        console.log(categories);
+        return categories.map((category) => (
             <Category
                 key={category.id}
                 category={category}
@@ -26,7 +36,8 @@ export default class CategoryListPage extends Component {
     updateList = (title) => {
         const newCategory = {
             id: uuidv4(),
-            title
+            title,
+            userId: 1
         };
 
         this.setState({
@@ -43,11 +54,11 @@ export default class CategoryListPage extends Component {
                 {this.renderCategories()}
                 <Link to={{
                     pathname: '/categories/add',
-                    state: {
-                        updateList: this.updateList
-                }
+                    updateList: this.updateList
                 }} >+ Add New Category</Link>
             </ul>
         );
     }
 }
+
+export default withRouter(CategoryListPage);

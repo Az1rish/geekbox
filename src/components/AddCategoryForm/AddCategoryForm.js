@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './AddCategoryForm.css';
 
-export default class AddCategoryForm extends Component {
+class AddCategoryForm extends Component {
     constructor(props) {
         super(props)
     
@@ -22,9 +23,7 @@ export default class AddCategoryForm extends Component {
     handleSubmitNewCategory = (e) => {
         e.preventDefault();
         const { title } = e.target;
-        console.log(this.props);
         const { updateList, onAddCategorySuccess } = this.props;
-        console.log(updateList);
         updateList(title);
         onAddCategorySuccess();
     }
@@ -58,3 +57,5 @@ export default class AddCategoryForm extends Component {
         );
       }
 }
+
+export default withRouter(AddCategoryForm);
