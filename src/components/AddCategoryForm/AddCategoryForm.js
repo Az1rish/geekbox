@@ -24,7 +24,7 @@ class AddCategoryForm extends Component {
         e.preventDefault();
         const { title } = e.target;
         const { updateList, onAddCategorySuccess } = this.props;
-        updateList(title);
+        updateList(title.value);
         onAddCategorySuccess();
     }
 

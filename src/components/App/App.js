@@ -11,9 +11,28 @@ import ResourceListPage from '../../routes/ResourceListPage/ResourceListPage';
 import ResourcePage from '../../routes/ResourcePage/ResourcePage';
 import SignInPage from '../../routes/SignInPage/SignInPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
+import GeekBoxContext from '../../GeekBoxContext';
+import Store from '../../STORE';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       categories: Store.categories,
+       resources: Store.resources,
+       users: Store.users,
+       comments: Store.comments
+    }
+  }
+
+  handleAddCategory = category => {
+    this.setState({
+      categories: [...this.state.categories, category]
+    })
+  }
+  
   render() {
     return (
       <div className="App">

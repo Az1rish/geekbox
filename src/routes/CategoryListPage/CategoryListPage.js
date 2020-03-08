@@ -37,15 +37,18 @@ class CategoryListPage extends Component {
         const newCategory = {
             id: uuidv4(),
             title,
-            userId: 1
+            userId: 1,
+            date_created: new Date()
         };
-
-        this.setState({
-            categories: {
-                ...this.state.categories,
-                newCategory
-            }
-        })
+        console.log(newCategory);
+        if (this._isMounted) {
+            this.setState({
+                categories: [
+                    ...this.state.categories,
+                    newCategory
+                ]
+            })
+        }
     }
 
     render() {
