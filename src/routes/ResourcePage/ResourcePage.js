@@ -7,10 +7,10 @@ import './ResourcePage.css';
 
 export default class ResourcePage extends Component {
     renderResource = (id) => {
-        const resource = Store.resources.filter(resource => resource.id === Number(id))
+        const resource = Store.resources.filter(resource => resource.id === Number(id))[0];
         return (
             <FullResource
-                resource={resource[0]}
+                resource={resource}
             />
         )
     }

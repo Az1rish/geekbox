@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Resource from '../../components/Resource/Resource';
 import Store from '../../STORE';
 import './ResourceListPage.css';
@@ -17,9 +18,13 @@ export default class ResourceListPage extends Component {
 
     render() {
         return (
-            <ul className="ResourceListPage">
-                {this.renderResources()}
-            </ul>
+            <div className="ResourceListPage">
+                <ul className="ResourcesList">
+                    {this.renderResources()}
+                </ul>
+                <Link to='/resource/add'>+ Add New Resource</Link>
+            </div>
+            
         );
     }
 }
