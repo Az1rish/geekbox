@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import FullResource from './FullResource';
+import AddCategoryForm from './AddCategoryForm';
 
 test('renders without crashing', () => {
   const div = document.createElement('div');
-//   const FullResource = {
+//   const AddCategory = {
     // id: 1,
     // title: 'JavaScript',
     // userId: 1
 // }
   ReactDOM.render(
     <BrowserRouter>
-        <FullResource />
+        <AddCategoryForm />
     </BrowserRouter>, 
       div
   );
