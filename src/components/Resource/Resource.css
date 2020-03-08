@@ -1,0 +1,12 @@
+.resource__details * {
+    background-color: #3dcc3d;
+}
+
+.resource__details {
+    background-color: #3dcc3d;
+    border: solid white 1px;
+    border-radius: 5px;
+    margin: 5px auto;
+    padding: 5px;
+    width: 80%;
+}

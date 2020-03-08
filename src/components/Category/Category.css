@@ -1,0 +1,12 @@
+.Category * {
+    background-color: #3dcc3d;
+}
+
+.Category {
+    background-color: #3dcc3d;
+    border: solid white 1px;
+    border-radius: 5px;
+    margin: 5px auto;
+    padding: 5px;
+    width: 80%;
+}

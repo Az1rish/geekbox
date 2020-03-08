@@ -13,7 +13,7 @@ class Nav extends Component {
                     <FontAwesomeIcon icon={'box-open'} />
                 </h1>
                 <span className="links">
-                    <Link to='/home'>
+                    <Link to='/categories'>
                         Home
                     </Link>
                     {" | "}

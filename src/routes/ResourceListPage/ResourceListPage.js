@@ -5,10 +5,12 @@ import './ResourceListPage.css';
 
 export default class ResourceListPage extends Component {
     renderResources() {
-        return Store.resources.map((resource) => (
+        const { categoryId } = this.props.match.params;
+        const filteredResources = Store.resources.filter(resource => resource.categoryId === Number(categoryId));
+        return filteredResources.map((resource) => (
             <Resource
                 key={resource.id}
-                Resource={resource}
+                resource={resource}
             />
         ));
     }
