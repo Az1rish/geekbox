@@ -19,8 +19,14 @@ export default class AddCategoryForm extends Component {
         onAddCategorySuccess: () => {}
     }
 
-    handleSubmitNewCategory = (newCategory) => {
-        console.log(newCategory)
+    handleSubmitNewCategory = (e) => {
+        e.preventDefault();
+        const { title } = e.target;
+        console.log(this.props);
+        const { updateList, onAddCategorySuccess } = this.props;
+        console.log(updateList);
+        updateList(title);
+        onAddCategorySuccess();
     }
 
     render() {
@@ -39,6 +45,7 @@ export default class AddCategoryForm extends Component {
               </label>
               <input
                 required
+                type='text'
                 name="title"
                 id="AddCategoryForm__title"
               />
