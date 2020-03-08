@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { 
     faStar as fasStar,
-    faBoxOpen 
+    faBoxOpen,
+    faComments
 } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import App from './components/App/App';
@@ -13,7 +14,8 @@ import App from './components/App/App';
 library.add(
     farStar,
     fasStar,
-    faBoxOpen
+    faBoxOpen,
+    faComments
 );
 
 ReactDOM.render(

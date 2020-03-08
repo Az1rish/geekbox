@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { format } from 'date-fns';
 import { ResourceStarRating } from '../ResourceStarRating/ResourceStarRating';
 import Store from '../../STORE';
@@ -7,8 +8,7 @@ import './FullResource.css';
 class FullResource extends Component {
   render() {
     const { resource } = this.props;
-    const { comments, categories } = Store;
-    const currentCategory = categories.filter(category => category.id === resource.categoryId)[0];
+    const { comments } = Store;
     return (
       <>
         <ResourceDescription resource={resource}  />
@@ -60,7 +60,8 @@ function ResourceComments({ comments = [], resource }) {
       {filteredComments.map((comment) => (
         <li key={comment.id} className="ResourcePage__comment">
           <p className="ResourcePage__comment-text">
-            {' - '}
+            <FontAwesomeIcon icon={'comments'} />
+            {' '}
             {comment.comment}
           </p>
           <p className="ResourcePage__comment-user">
