@@ -23,7 +23,6 @@ class AddResourcePage extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <section className='AddResourcePage'>
                 <h2>Add Resource</h2>
