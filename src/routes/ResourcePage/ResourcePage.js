@@ -17,7 +17,6 @@ export default class ResourcePage extends Component {
 
     render() {
         const { resourceId } = this.props.match.params;
-        
         const { categories, resources } = Store;
         const resource  = resources.filter(resource => resource.id === Number(resourceId))[0];
         const currentCategory = categories.filter(category => category.id === resource.categoryId)[0];

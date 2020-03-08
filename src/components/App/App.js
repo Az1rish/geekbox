@@ -41,6 +41,7 @@ class App extends Component {
               component={CategoryListPage}
             />
             <Route
+              exact
               path='/categories/add'
               component={AddCategoryPage}
             />
@@ -49,12 +50,13 @@ class App extends Component {
               component={ResourceListPage}
             />
             <Route
-              path='/resource/:resourceId'
-              component={ResourcePage}
-            />
-            <Route
+              exact
               path='/resource/add'
               component={AddResourcePage}
+            />
+            <Route
+              path='/resource/:resourceId'
+              component={ResourcePage}
             />
             <Route
               component={NotFoundPage}
