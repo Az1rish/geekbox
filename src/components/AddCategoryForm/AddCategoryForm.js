@@ -47,8 +47,8 @@ class AddCategoryForm extends Component {
     handleSubmitNewCategory = (e) => {
         e.preventDefault();
         const { title } = e.target;
-        const { updateList, onAddCategorySuccess } = this.props;
-        updateList(title.value);
+        const { onAddCategorySuccess } = this.props;
+        this.updateList(title.value);
         onAddCategorySuccess();
     }
 
