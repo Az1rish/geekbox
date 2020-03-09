@@ -29,6 +29,10 @@ function truncate(text) {
 
 export default function Resource(props) {
     const { resource } = props;
+    const { comments } = Store;
+    const filteredComments = comments.filter(comment => comment.resourceId === resource.id);
+    const totalRating = filteredComments.map(comment => comment.rating).reduce((a, b) => a + b, 0);
+    const averageRating = totalRating/filteredComments.length;
     const postTime = new Date(resource.date_created);
     postTime.toString();
     const user = Store.users.filter(user => user.id === resource.userId);
@@ -51,10 +55,10 @@ export default function Resource(props) {
           </div>
   
           <div className="resource__comments">
-            <ResourceStarRating rating={resource.average_comment_rating} />
+            <ResourceStarRating rating={Math.floor(averageRating)} />
             {' '}
             <span id="resource__comment-count">
-              {readableCommentCount(resource.number_of_comments)}
+              {readableCommentCount(filteredComments.length)}
             </span>
           </div>
         </div>
