@@ -35,10 +35,11 @@ class AddResourceForm extends Component {
           title: title.value,
           url: url.value,
           description: description.value,
+          date_created: new Date(),
           userId: 1,
           categoryId: category.id
         }
-
+        console.log(newResource);
         this.context.addResource(newResource);
         onAddResourceSuccess();
     }
