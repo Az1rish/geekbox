@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import AddCategoryPage from '../../routes/AddCategoryPage/AddCategoryPage';
@@ -61,12 +61,12 @@ class App extends Component {
       addResource: this.handleAddResource,
       addComment: this.handleAddComment,
       addUser: this.handleAddUser,
-    }
-console.log(value)
-console.log(this.state)
+    };
+    console.log(value);
+    console.log(this.state);
     return (
-        <GeekBoxContext.Provider value={value}>
-          <div className="App">
+      <GeekBoxContext.Provider value={value}>
+        <div className="App">
           <header className="App__nav">
             <Nav />
           </header>
@@ -120,4 +120,4 @@ console.log(this.state)
   }
 }
 
-export default App;
+export default withRouter(App);
