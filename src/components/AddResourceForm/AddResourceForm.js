@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+import GeekBoxContext from '../../GeekBoxContext';
 import './AddResourceForm.css';
 
-export default class AddResourceForm extends Component {
+class AddResourceForm extends Component {
     constructor(props) {
         super(props)
     
@@ -19,11 +22,29 @@ export default class AddResourceForm extends Component {
         onAddResourceSuccess: () => {}
     }
 
-    handleSubmitNewResource = (newResource) => {
-        console.log(newResource)
+    static contextType = GeekBoxContext;
+
+    handleSubmitNewResource = (e) => {
+        e.preventDefault();
+        const { title, url, description } = e.target;
+        const { onAddResourceSuccess } = this.props;
+        const { category } = this.props.location.state;
+        console.log(category.id)
+        const newResource = {
+          id: uuidv4(),
+          title: title.value,
+          url: url.value,
+          description: description.value,
+          userId: 1,
+          categoryId: category.id
+        }
+
+        this.context.addResource(newResource);
+        onAddResourceSuccess();
     }
 
     render() {
+      console.log(this.props)
         const { error } = this.state;
         return (
           <form
@@ -70,3 +91,5 @@ export default class AddResourceForm extends Component {
         );
       }
 }
+
+export default withRouter(AddResourceForm);

@@ -31,16 +31,7 @@ class AddCategoryForm extends Component {
           userId: 1,
           date_created: new Date()
       };
-      console.log(newCategory);
-      // console.log(this._isMounted);
-      // if (this._isMounted) {
-          // this.setState({
-              // categories: [
-                  // ...this.state.categories,
-                  // newCategory
-              // ]
-          // }, console.log(this.state.categories))
-      // }
+
       this.context.addCategory(newCategory)
   }
 

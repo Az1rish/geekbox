@@ -23,8 +23,6 @@ class AddCategoryPage extends Component {
     }
 
     render() {
-        // const { updateList } = this.props.location;
-        // console.log(updateList);
         return (
             <section className='AddCategoryPage'>
                 <h2>Add Category</h2>

@@ -5,7 +5,12 @@ import './Category.css';
 export default function Category(props) {
     const { category } = props;
     return (
-        <Link to={`/categories/${category.id}`} className="Category__link">
+        <Link to={{
+            pathname: `/categories/${category.id}`,
+            state: {
+                category
+            }
+        }} className="Category__link">
             <li className="Category">
                 <h2 className="Category__title">
                     {category.title}

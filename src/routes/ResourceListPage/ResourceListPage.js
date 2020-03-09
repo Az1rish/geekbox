@@ -17,12 +17,23 @@ export default class ResourceListPage extends Component {
     }
 
     render() {
+        const { category } = this.props.location.state;
+        
+
         return (
             <div className="ResourceListPage">
+                <h2>{category.title}</h2>
                 <ul className="ResourcesList">
                     {this.renderResources()}
                 </ul>
-                <Link to='/resource/add'>+ Add New Resource</Link>
+                <Link to={{
+                    pathname: '/resource/add',
+                    state: {
+                        category
+                    }
+                }}>
+                    + Add New Resource
+                </Link>
             </div>
             
         );

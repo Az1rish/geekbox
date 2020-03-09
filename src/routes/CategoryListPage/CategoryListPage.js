@@ -1,33 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Category from '../../components/Category/Category';
-import Store from '../../STORE';
 import GeekBoxContext from '../../GeekBoxContext';
 import './CategoryListPage.css';
 
 class CategoryListPage extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-            categories: Store.categories
-        }
-    }
-
     static contextType = GeekBoxContext;
-
-    // componentDidMount() {
-        // this._isMounted = true;
-        // console.log('Mounted');
-    //   }
-    
-    //   componentWillUnmount() {
-        // this._isMounted = false;
-        // console.log("Unmounted");
-    //   }
     
     renderCategories() {
-        const { categories } = this.state;
+        const { categories } = this.context;
         console.log(categories);
         return categories.map((category) => (
             <Category
@@ -36,9 +17,7 @@ class CategoryListPage extends Component {
             />
         ));
     }
-
     
-
     render() {
         return (
             <ul className="CategoryListPage">

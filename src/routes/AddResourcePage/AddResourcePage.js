@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import GeekBoxContext from '../../GeekBoxContext';
 import AddResourceForm from '../../components/AddResourceForm/AddResourceForm';
 import './AddResourcePage.css';
 
@@ -17,9 +18,19 @@ class AddResourcePage extends Component {
         }
     };
 
+    static contextType = GeekBoxContext;
+
     onAddResource = () => {
+        console.log(this.context)
         const { history } = this.props;
-        history.push('/resources/');
+        console.log(this.props)
+        const { category } = this.props.location.state;
+        history.push({
+            pathname: `/categories/${category.id}`,
+            state: {
+                category
+            }
+        });
     }
 
     render() {
