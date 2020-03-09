@@ -8,7 +8,7 @@ const GeekBoxContext = React.createContext({
     addCategory: () => {},
     addResource: () => {},
     addComment: () => {},
-    addUser: () => {},
+    addUser: () => {}
 })
 
 export default GeekBoxContext;

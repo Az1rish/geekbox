@@ -28,7 +28,7 @@ class AddCategoryPage extends Component {
         return (
             <section className='AddCategoryPage'>
                 <h2>Add Category</h2>
-                <AddCategoryForm onAddCategorySuccess={this.onAddCategory} updateList={updateList} />
+                <AddCategoryForm onAddCategorySuccess={this.onAddCategory} />
             </section>
         )
     }

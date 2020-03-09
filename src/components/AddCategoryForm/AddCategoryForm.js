@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+import GeekBoxContext from '../../GeekBoxContext';
 import './AddCategoryForm.css';
 
 class AddCategoryForm extends Component {
@@ -19,6 +21,28 @@ class AddCategoryForm extends Component {
     static defaultProps = {
         onAddCategorySuccess: () => {}
     }
+
+    static contextType = GeekBoxContext;
+
+    updateList = (title) => {
+      const newCategory = {
+          id: uuidv4(),
+          title,
+          userId: 1,
+          date_created: new Date()
+      };
+      console.log(newCategory);
+      // console.log(this._isMounted);
+      // if (this._isMounted) {
+          // this.setState({
+              // categories: [
+                  // ...this.state.categories,
+                  // newCategory
+              // ]
+          // }, console.log(this.state.categories))
+      // }
+      this.context.addCategory(newCategory)
+  }
 
     handleSubmitNewCategory = (e) => {
         e.preventDefault();

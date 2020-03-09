@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Category from '../../components/Category/Category';
-import { v4 as uuidv4 } from 'uuid';
 import Store from '../../STORE';
+import GeekBoxContext from '../../GeekBoxContext';
 import './CategoryListPage.css';
 
 class CategoryListPage extends Component {
@@ -14,13 +14,17 @@ class CategoryListPage extends Component {
         }
     }
 
-    componentDidMount() {
-        this._isMounted = true;
-      }
+    static contextType = GeekBoxContext;
+
+    // componentDidMount() {
+        // this._isMounted = true;
+        // console.log('Mounted');
+    //   }
     
-      componentWillUnmount() {
-        this._isMounted = false;
-      }
+    //   componentWillUnmount() {
+        // this._isMounted = false;
+        // console.log("Unmounted");
+    //   }
     
     renderCategories() {
         const { categories } = this.state;
@@ -33,32 +37,13 @@ class CategoryListPage extends Component {
         ));
     }
 
-    updateList = (title) => {
-        const newCategory = {
-            id: uuidv4(),
-            title,
-            userId: 1,
-            date_created: new Date()
-        };
-        console.log(newCategory);
-        if (this._isMounted) {
-            this.setState({
-                categories: [
-                    ...this.state.categories,
-                    newCategory
-                ]
-            })
-        }
-    }
+    
 
     render() {
         return (
             <ul className="CategoryListPage">
                 {this.renderCategories()}
-                <Link to={{
-                    pathname: '/categories/add',
-                    updateList: this.updateList
-                }} >+ Add New Category</Link>
+                <Link to='/categories/add' >+ Add New Category</Link>
             </ul>
         );
     }
