@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { ResourceStarRating } from '../ResourceStarRating/ResourceStarRating';
-import Store from '../../STORE';
+import GeekBoxContext from '../../GeekBoxContext';
 import './Resource.css';
 
-function readableCommentCount(number) {
+export default class Resource extends Component {
+  static contextType = GeekBoxContext;
+
+  readableCommentCount = (number) => {
     switch (number) {
         case 0:
             return 'no comments yet';
@@ -17,7 +20,7 @@ function readableCommentCount(number) {
     }
 }
 
-function truncate(text) {
+truncate = (text) => {
     const words = text.split(' ');
 
     if (words.length > 5) {
@@ -26,16 +29,15 @@ function truncate(text) {
 
     return text;
 }
-
-export default function Resource(props) {
-    const { resource } = props;
-    const { comments } = Store;
+  render() {
+    const { resource } = this.props;
+    const { comments } = this.context;
     const filteredComments = comments.filter(comment => comment.resourceId === resource.id);
     const totalRating = filteredComments.map(comment => comment.rating).reduce((a, b) => a + b, 0);
     const averageRating = totalRating/filteredComments.length;
     const postTime = new Date(resource.date_created);
     postTime.toString();
-    const user = Store.users.filter(user => user.id === resource.userId);
+    const user = this.context.users.filter(user => user.id === resource.userId)[0];
     
     return (
       <Link to={`/resource/${resource.id}`} className="resource">
@@ -45,12 +47,12 @@ export default function Resource(props) {
               {resource.title}
             </h2>
             <p className="resource__description">
-              {truncate(resource.description)}
+              {this.truncate(resource.description)}
             </p>
             <p>
               Posted by
               {' '}
-              {user[0].firstName}
+              {user.firstName}
             </p>
           </div>
   
@@ -58,10 +60,13 @@ export default function Resource(props) {
             <ResourceStarRating rating={Math.floor(averageRating)} />
             {' '}
             <span id="resource__comment-count">
-              {readableCommentCount(filteredComments.length)}
+              {this.readableCommentCount(filteredComments.length)}
             </span>
           </div>
         </div>
       </Link>
     );
+  }
+
+    
   }

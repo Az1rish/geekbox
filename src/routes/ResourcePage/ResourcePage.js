@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CommentForm from '../../components/CommentForm/CommentForm';
 import FullResource from '../../components/FullResource/FullResource';
-import Store from '../../STORE';
+import GeekBoxContext from '../../GeekBoxContext';
 import './ResourcePage.css';
 
 export default class ResourcePage extends Component {
+    static contextType = GeekBoxContext;
+
     renderResource = (id) => {
-        const resource = Store.resources.filter(resource => resource.id === Number(id))[0];
+        const resource = this.context.resources.filter(resource => resource.id === Number(id))[0];
         return (
             <FullResource
                 resource={resource}
@@ -17,7 +19,7 @@ export default class ResourcePage extends Component {
 
     render() {
         const { resourceId } = this.props.match.params;
-        const { categories, resources } = Store;
+        const { categories, resources } = this.context;
         const resource  = resources.filter(resource => resource.id === Number(resourceId))[0];
         const currentCategory = categories.filter(category => category.id === resource.categoryId)[0];
         return (

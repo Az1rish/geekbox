@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Store from '../../STORE';
+import GeekBoxContext from '../../GeekBoxContext';
 import './CommentForm.css';
 
 export default class CommentForm extends Component {
+  static contextType = GeekBoxContext;
+
     handleSubmit = (e) => {
         e.preventDefault();
         const { text, rating } = e.target;
@@ -11,7 +13,7 @@ export default class CommentForm extends Component {
             rating
         }
 
-        Store.comments.push(newComment);
+        this.context.addComment(newComment);
     }
 
     render() {

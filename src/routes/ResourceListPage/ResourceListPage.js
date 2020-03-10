@@ -21,7 +21,7 @@ export default class ResourceListPage extends Component {
 
     render() {
         const { category } = this.props.location.state;
-        
+        console.log(this.props)
 
         return (
             <div className="ResourceListPage">
