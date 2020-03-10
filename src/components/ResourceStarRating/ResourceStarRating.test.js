@@ -4,31 +4,31 @@ import { BrowserRouter } from 'react-router-dom';
 import { ResourceStarRating } from './ResourceStarRating';
 import Resource from '../Resource/Resource';
 import App from '../App/App';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { 
+    faStar as fasStar,
+    faBoxOpen,
+    faComments
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+    farStar,
+    fasStar,
+    faBoxOpen,
+    faComments
+);
 
 test('renders without crashing', () => {
   const div = document.createElement('div');
   const resource = {
     id: 1,
-    image: 'https://images.freeimages.com/images/large-previews/6b3/jetty-at-lysterfield-lake-1640074.jpg',
-    title: 'Lysterfield Lake',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    location: 'Mercury',
-    number_of_comments: 4,
-    average_comment_rating: 3.2,
+    title: 'Udemy',
+    url: 'https://www.udemy.com/',
+    description: "Deep v art party chicharrones pug ethical sustainable flexitarian hot chicken iceland YOLO ugh. Pickled franzen ennui edison bulb you probably haven't heard of them woke typewriter.",
     date_created: new Date(),
-    comments: [
-      {
-        id: 1,
-        text: 'Lorem ipsum comments...',
-        rating: 4,
-        user: {
-          full_name: 'Rick Sanchez'
-        }
-      }
-    ],
-    user: {
-      full_name: 'Rick Sanchez'
-    }
+    categoryId: 1,
+    userId: 4
   };
   ReactDOM.render(
     <BrowserRouter>

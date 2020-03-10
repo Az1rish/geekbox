@@ -5,11 +5,6 @@ import AddResourcePage from './AddResourcePage';
 
 test('renders without crashing', () => {
   const div = document.createElement('div');
-//   const AddResource = {
-    // id: 1,
-    // title: 'JavaScript',
-    // userId: 1
-// }
   ReactDOM.render(
     <BrowserRouter>
         <AddResourcePage />
