@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { ResourceStarRating } from '../ResourceStarRating/ResourceStarRating';
 import GeekBoxContext from '../../GeekBoxContext';
 import './Resource.css';
 
-export default class Resource extends Component {
+class Resource extends Component {
   static contextType = GeekBoxContext;
 
   readableCommentCount = (number) => {
@@ -32,15 +32,21 @@ truncate = (text) => {
   render() {
     const { resource } = this.props;
     const { comments } = this.context;
+    const { category } = this.props.location.state;
     const filteredComments = comments.filter(comment => comment.resourceId === resource.id);
     const totalRating = filteredComments.map(comment => comment.rating).reduce((a, b) => a + b, 0);
     const averageRating = totalRating/filteredComments.length;
     const postTime = new Date(resource.date_created);
     postTime.toString();
     const user = this.context.users.filter(user => user.id === resource.userId)[0];
-    
+    console.log(this.props)
     return (
-      <Link to={`/resource/${resource.id}`} className="resource">
+      <Link to={{
+        pathname: `/resource/${resource.id}`,
+        state: {
+            category
+        }
+    }} className="resource">
         <div className="resource__details">
           <div className="resource__text">
             <h2 className="resource__heading">
@@ -67,6 +73,6 @@ truncate = (text) => {
       </Link>
     );
   }
+}
 
-    
-  }
+export default withRouter(Resource);

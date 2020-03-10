@@ -66,6 +66,7 @@ class FullResource extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { resource } = this.props;
     const { comments } = this.context;
     return (

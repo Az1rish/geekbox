@@ -18,16 +18,24 @@ export default class ResourcePage extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { resourceId } = this.props.match.params;
         const { categories, resources } = this.context;
-        const resource  = resources.filter(resource => resource.id === Number(resourceId))[0];
+        const { category } = this.props.location.state;
+        const resource  = resources.filter(resource => resource.id == resourceId)[0];
         const currentCategory = categories.filter(category => category.id === resource.categoryId)[0];
+        
         return (
             <div className="ResourcePage">
                 {this.renderResource(resourceId)}
                 <CommentForm />
                 <Link to='/categories'>Return to List of Categories</Link>
-                <Link to={`/categories/${currentCategory.id}`}>Return to {currentCategory.title}</Link>
+                <Link to={{
+        pathname: `/categories/${currentCategory.id}`,
+        state: {
+            category
+        }
+    }}>Return to {currentCategory.title}</Link>
             </div>
         )
     }
