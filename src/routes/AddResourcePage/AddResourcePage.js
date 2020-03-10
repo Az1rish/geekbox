@@ -21,9 +21,7 @@ class AddResourcePage extends Component {
     static contextType = GeekBoxContext;
 
     onAddResource = () => {
-        console.log(this.context)
         const { history } = this.props;
-        console.log(this.props)
         const { category } = this.props.location.state;
         history.push({
             pathname: `/categories/${category.id}`,

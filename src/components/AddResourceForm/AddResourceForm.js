@@ -29,7 +29,6 @@ class AddResourceForm extends Component {
         const { title, url, description } = e.target;
         const { onAddResourceSuccess } = this.props;
         const { category } = this.props.location.state;
-        console.log(category.id)
         const newResource = {
           id: uuidv4(),
           title: title.value,
@@ -39,13 +38,11 @@ class AddResourceForm extends Component {
           userId: 1,
           categoryId: category.id
         }
-        console.log(newResource);
         this.context.addResource(newResource);
         onAddResourceSuccess();
     }
 
     render() {
-      console.log(this.props)
         const { error } = this.state;
         return (
           <form

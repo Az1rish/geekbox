@@ -9,7 +9,6 @@ class CategoryListPage extends Component {
     
     renderCategories() {
         const { categories } = this.context;
-        console.log(categories);
         return categories.map((category) => (
             <Category
                 key={category.id}

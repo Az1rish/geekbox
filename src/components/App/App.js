@@ -34,10 +34,9 @@ class App extends Component {
   }
 
   handleAddResource = resource => {
-    console.log("handleAddResource called");
     this.setState({
       resources: [...this.state.resources, resource]
-    }, () => {console.log ( this.state.resources)} )
+    })
   }
 
   handleAddComment = comment => {
