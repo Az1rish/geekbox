@@ -62,6 +62,7 @@ class App extends Component {
       addComment: this.handleAddComment,
       addUser: this.handleAddUser,
     };
+   
     return (
       <GeekBoxContext.Provider value={value}>
         <div className="App">

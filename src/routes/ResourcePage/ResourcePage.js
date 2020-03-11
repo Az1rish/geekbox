@@ -9,7 +9,7 @@ export default class ResourcePage extends Component {
     static contextType = GeekBoxContext;
 
     renderResource = (id) => {
-        const resource = this.context.resources.filter(resource => resource.id === Number(id))[0];
+        const resource = this.context.resources.filter(resource => resource.id == id)[0];
         return (
             <FullResource
                 resource={resource}
@@ -18,7 +18,6 @@ export default class ResourcePage extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { resourceId } = this.props.match.params;
         const { categories, resources } = this.context;
         const { category } = this.props.location.state;

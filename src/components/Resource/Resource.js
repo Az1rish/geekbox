@@ -39,7 +39,7 @@ truncate = (text) => {
     const postTime = new Date(resource.date_created);
     postTime.toString();
     const user = this.context.users.filter(user => user.id === resource.userId)[0];
-    console.log(this.props)
+   
     return (
       <Link to={{
         pathname: `/resource/${resource.id}`,

@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Resource from './Resource';
+import ResourceListPage from '../../routes/ResourceListPage/ResourceListPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import App from '../App/App';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { 
     faStar as fasStar,
@@ -33,10 +35,22 @@ test('renders without crashing', () => {
     firstName: 'Dee',
     lastName: 'Hammann'
   };
+  const state = {
+    category: {
+      id: 1,
+      title: 'JavaScript',
+      date_created: new Date(),
+      userId: 1
+  }
+  }
 
   ReactDOM.render(
     <BrowserRouter>
-        <Resource resource={resource} user={user} />
+      <App>
+        <ResourceListPage location={state}>
+          <Resource resource={resource} user={user}  />
+        </ResourceListPage>
+      </App>
     </BrowserRouter>, 
       div
   );

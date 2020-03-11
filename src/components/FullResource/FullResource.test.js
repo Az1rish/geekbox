@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import FullResource from './FullResource';
+import ResourcePage from '../../routes/ResourcePage/ResourcePage';
+import App from '../App/App';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { 
@@ -30,7 +32,11 @@ test('renders without crashing', () => {
 };
   ReactDOM.render(
     <BrowserRouter>
-        <FullResource resource={resource}/>
+      <App>
+        <ResourcePage>
+          <FullResource resource={resource}/>
+        </ResourcePage>
+      </App>
     </BrowserRouter>, 
       div
   );

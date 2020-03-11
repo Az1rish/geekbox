@@ -5,12 +5,20 @@ import Resource from '../../components/Resource/Resource';
 import './ResourceListPage.css';
 
 export default class ResourceListPage extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             added: true
+        }
+    }
+    
     static contextType = GeekBoxContext;
 
     renderResources() {
         const { categoryId } = this.props.match.params;
         const { resources } = this.context;
-        const filteredResources = resources.filter(resource => resource.categoryId === Number(categoryId));
+        const filteredResources = resources.filter(resource => resource.categoryId == categoryId);
         return filteredResources.map((resource) => (
             <Resource
                 key={resource.id}
@@ -21,8 +29,6 @@ export default class ResourceListPage extends Component {
 
     render() {
         const { category } = this.props.location.state;
-        console.log(this.props)
-
         return (
             <div className="ResourceListPage">
                 <h2>{category.title}</h2>

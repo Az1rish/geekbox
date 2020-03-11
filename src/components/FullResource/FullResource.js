@@ -42,8 +42,8 @@ class FullResource extends Component {
   
   
   ResourceComments = ( comments = [], resource ) => {
-    const user = this.context.users.filter(user => user.id === resource.userId);
-    const filteredComments = comments.filter(comment => comment.userId === user[0].id);
+    const user = this.context.users.filter(user => user.id === resource.userId)[0];
+    const filteredComments = comments.filter(comment => comment.userId === user.id);
   
     return (
       <ul className="ResourcePage__comment-list">
@@ -57,7 +57,7 @@ class FullResource extends Component {
             <p className="ResourcePage__comment-user">
               <ResourceStarRating rating={comment.rating} />
               {' - '}
-              {user[0].firstName}
+              {user.firstName}
             </p>
           </li>
         ))}
@@ -66,7 +66,6 @@ class FullResource extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { resource } = this.props;
     const { comments } = this.context;
     return (
