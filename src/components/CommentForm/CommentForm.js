@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import GeekBoxContext from '../../GeekBoxContext';
 import './CommentForm.css';
 
-export default class CommentForm extends Component {
+class CommentForm extends Component {
   static contextType = GeekBoxContext;
 
     handleSubmit = (e) => {
@@ -12,14 +13,16 @@ export default class CommentForm extends Component {
         const { resource } = this.props;
         const newComment = {
           id: uuidv4(),
-          comment: text,
-          rating,
+          comment: text.value,
+          rating: rating.value,
           date_created: new Date(),
           resourceId: resource.id,
           userId: 1
         }
-
+console.log(this.props)
+        const { history } = this.props;
         this.context.addComment(newComment);
+        history.push(`/resource/${resource.id}`)
     }
 
     render() {
@@ -63,3 +66,5 @@ export default class CommentForm extends Component {
         )
     }
 }
+
+export default withRouter(CommentForm);

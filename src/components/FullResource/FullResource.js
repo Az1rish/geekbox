@@ -9,7 +9,7 @@ class FullResource extends Component {
   static contextType = GeekBoxContext;
 
   ResourceDescription = ( resource ) => {
-    const user = this.context.users.filter(user => user.id === resource.userId)[0];
+    const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
     const postTime = new Date(resource.date_created);
     postTime.toString();
       return (
@@ -42,9 +42,10 @@ class FullResource extends Component {
   
   
   ResourceComments = ( comments = [], resource ) => {
-    const user = this.context.users.filter(user => user.id === resource.userId)[0];
-    const filteredComments = comments.filter(comment => comment.userId === user.id);
-  
+    const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
+    const filteredComments = comments.filter(comment => comment.userId.toString() === user.id.toString());
+  console.log(filteredComments)
+  console.log(resource)
     return (
       <ul className="ResourcePage__comment-list">
         {filteredComments.map((comment) => (
