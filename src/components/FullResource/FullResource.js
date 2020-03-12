@@ -43,10 +43,8 @@ class FullResource extends Component {
   
   ResourceComments = ( comments = [], resource ) => {
     const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
-    const filteredComments = comments.filter(comment => comment.userId.toString() === user.id.toString());
-  console.log(filteredComments)
-  console.log(resource)
-  console.log(this.context)
+    const filteredComments = comments.filter(comment => comment.resourceId.toString() === resource.id.toString());
+ 
     return (
       <ul className="ResourcePage__comment-list">
         {filteredComments.map((comment) => (
@@ -70,7 +68,7 @@ class FullResource extends Component {
   render() {
     const { resource } = this.props;
     const { comments } = this.context;
-    console.log(this.props)
+   
     return (
       <>
         {this.ResourceDescription(resource)}

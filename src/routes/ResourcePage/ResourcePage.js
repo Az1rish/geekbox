@@ -18,7 +18,6 @@ export default class ResourcePage extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { resourceId } = this.props.match.params;
         const { categories, resources } = this.context;
         const { category } = this.props.location.state;

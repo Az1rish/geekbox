@@ -19,7 +19,7 @@ class CommentForm extends Component {
           resourceId: resource.id,
           userId: 1
         }
-console.log(this.props)
+(this.props)
         const { history } = this.props;
         this.context.addComment(newComment);
         history.push({
