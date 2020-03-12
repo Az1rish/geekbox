@@ -18,6 +18,7 @@ export default class ResourcePage extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { resourceId } = this.props.match.params;
         const { categories, resources } = this.context;
         const { category } = this.props.location.state;
@@ -27,7 +28,7 @@ export default class ResourcePage extends Component {
         return (
             <div className="ResourcePage">
                 {this.renderResource(resourceId)}
-                <CommentForm resource={resource} />
+                <CommentForm category={category} resource={resource} />
                 <Link to='/categories'>Return to List of Categories</Link>
                 <Link to={{
         pathname: `/categories/${currentCategory.id}`,

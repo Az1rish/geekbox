@@ -10,11 +10,11 @@ class CommentForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { text, rating } = e.target;
-        const { resource } = this.props;
+        const { resource, category } = this.props;
         const newComment = {
           id: uuidv4(),
           comment: text.value,
-          rating: rating.value,
+          rating: Number(rating.value),
           date_created: new Date(),
           resourceId: resource.id,
           userId: 1
@@ -22,7 +22,12 @@ class CommentForm extends Component {
 console.log(this.props)
         const { history } = this.props;
         this.context.addComment(newComment);
-        history.push(`/resource/${resource.id}`)
+        history.push({
+          pathname: `/resource/${resource.id}`,
+          state: {
+              category
+          }
+        });
     }
 
     render() {
