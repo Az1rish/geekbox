@@ -18,7 +18,7 @@ export default class ResourceListPage extends Component {
     renderResources() {
         const { categoryId } = this.props.match.params;
         const { resources } = this.context;
-        const filteredResources = resources.filter(resource => resource.categoryId == categoryId);
+        const filteredResources = resources.filter(resource => resource.categoryId.toString() === categoryId);
         return filteredResources.map((resource) => (
             <Resource
                 key={resource.id}

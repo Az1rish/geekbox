@@ -9,7 +9,7 @@ export default class ResourcePage extends Component {
     static contextType = GeekBoxContext;
 
     renderResource = (id) => {
-        const resource = this.context.resources.filter(resource => resource.id == id)[0];
+        const resource = this.context.resources.filter(resource => resource.id.toString() === id)[0];
         return (
             <FullResource
                 resource={resource}
@@ -21,13 +21,13 @@ export default class ResourcePage extends Component {
         const { resourceId } = this.props.match.params;
         const { categories, resources } = this.context;
         const { category } = this.props.location.state;
-        const resource  = resources.filter(resource => resource.id == resourceId)[0];
+        const resource  = resources.filter(resource => resource.id.toString() === resourceId)[0];
         const currentCategory = categories.filter(category => category.id === resource.categoryId)[0];
         
         return (
             <div className="ResourcePage">
                 {this.renderResource(resourceId)}
-                <CommentForm />
+                <CommentForm resource={resource} />
                 <Link to='/categories'>Return to List of Categories</Link>
                 <Link to={{
         pathname: `/categories/${currentCategory.id}`,

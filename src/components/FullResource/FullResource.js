@@ -9,7 +9,7 @@ class FullResource extends Component {
   static contextType = GeekBoxContext;
 
   ResourceDescription = ( resource ) => {
-    const user = this.context.users.filter(user => user.id === resource.userId);
+    const user = this.context.users.filter(user => user.id === resource.userId)[0];
     const postTime = new Date(resource.date_created);
     postTime.toString();
       return (
@@ -29,7 +29,7 @@ class FullResource extends Component {
             <p>
               Posted by
               {' '}
-              {user[0].firstName}
+              {user.firstName}
               {' '}
               on
               {' '}
@@ -68,6 +68,7 @@ class FullResource extends Component {
   render() {
     const { resource } = this.props;
     const { comments } = this.context;
+    console.log(this.props)
     return (
       <>
         {this.ResourceDescription(resource)}

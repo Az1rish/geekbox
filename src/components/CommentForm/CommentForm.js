@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import GeekBoxContext from '../../GeekBoxContext';
 import './CommentForm.css';
 
@@ -8,9 +9,14 @@ export default class CommentForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { text, rating } = e.target;
+        const { resource } = this.props;
         const newComment = {
-            text,
-            rating
+          id: uuidv4(),
+          comment: text,
+          rating,
+          date_created: new Date(),
+          resourceId: resource.id,
+          userId: 1
         }
 
         this.context.addComment(newComment);
