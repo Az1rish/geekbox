@@ -46,6 +46,7 @@ class FullResource extends Component {
     const filteredComments = comments.filter(comment => comment.userId.toString() === user.id.toString());
   console.log(filteredComments)
   console.log(resource)
+  console.log(this.context)
     return (
       <ul className="ResourcePage__comment-list">
         {filteredComments.map((comment) => (
