@@ -19,9 +19,10 @@ class CommentForm extends Component {
           resourceId: resource.id,
           userId: 1
         }
-(this.props)
+
         const { history } = this.props;
         this.context.addComment(newComment);
+        text.value = '';
         history.push({
           pathname: `/resource/${resource.id}`,
           state: {
@@ -49,7 +50,8 @@ class CommentForm extends Component {
           </div>
 
           <div className="select">
-            <label htmlFor="rating">Rate this photo!</label>
+            <label htmlFor="rating">Rate this resource!</label>
+            {' '}
             <select
               required
               aria-label="Rate this photo!"
