@@ -12,7 +12,8 @@ import ResourcePage from '../../routes/ResourcePage/ResourcePage';
 import SignInPage from '../../routes/SignInPage/SignInPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import GeekBoxContext from '../../GeekBoxContext';
-import Store from '../../STORE';
+import CategoriesApiService from '../../services/categories-api-service';
+import ResourcesApiService from '../../services/resources-api-service';
 import './App.css';
 
 class App extends Component {
@@ -20,11 +21,36 @@ class App extends Component {
     super(props)
   
     this.state = {
-       categories: Store.categories,
-       resources: Store.resources,
-       users: Store.users,
-       comments: Store.comments
+       categories: [],
+       resources: [],
+       user: {},
+       comments: []
     }
+  }
+
+  componentDidMount() {
+    this.setCategories();
+    this.setResources();
+  }
+
+  setCategories = () => {
+    CategoriesApiService.getCategories()
+      .then((data) => {
+        this.setState({
+          categories: data
+        })
+      })
+      .then(() => console.log('State', this.state));;
+  }
+
+  setResources = () => {
+    ResourcesApiService.getResources()
+      .then((data) => {
+        this.setState({
+          resources: data
+        })
+      })
+      .then(() => console.log('State', this.state));;
   }
 
   handleAddCategory = category => {
@@ -54,7 +80,7 @@ class App extends Component {
   render() {
     const value = {
       resources: this.state.resources,
-      users: this.state.users,
+      user: this.state.user,
       categories: this.state.categories,
       comments: this.state.comments,
       addCategory: this.handleAddCategory,

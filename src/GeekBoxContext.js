@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GeekBoxContext = React.createContext({
-    users: [],
+    user: [],
     categories: [],
     resources: [],
     comments: [],
