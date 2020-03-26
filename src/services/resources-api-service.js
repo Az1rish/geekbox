@@ -47,5 +47,23 @@ const ResourcesApiService = {
                 ? res.json().then((e) => Promise.reject(e))
                 : res.json()));
     },
-    postComment
-}
+    postComment(resourceId, comment, rating) {
+        return fetch(`${config.API_ENDPOINT}/comments`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify({
+                resource_id: resourceId,
+                rating,
+                comment
+            })
+        })
+            .then((res) => ((!res.ok)
+                ? res.json().then((e) => Promise.reject(e))
+                : res.json()));
+    }
+};
+
+export default ResourcesApiService;
