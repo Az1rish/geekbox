@@ -11,7 +11,7 @@ import ResourceListPage from '../../routes/ResourceListPage/ResourceListPage';
 import ResourcePage from '../../routes/ResourcePage/ResourcePage';
 import SignInPage from '../../routes/SignInPage/SignInPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
-import GeekBoxContext from '../../GeekBoxContext';
+// import GeekBoxContext from '../../GeekBoxContext';
 import CategoriesApiService from '../../services/categories-api-service';
 import ResourcesApiService from '../../services/resources-api-service';
 import './App.css';
@@ -30,7 +30,8 @@ class App extends Component {
 
   componentDidMount() {
     this.setCategories();
-    this.setResources();
+    this.setResources()
+    // this.setComments()
   }
 
   setCategories = () => {
@@ -40,7 +41,7 @@ class App extends Component {
           categories: data
         })
       })
-      .then(() => console.log('State', this.state));;
+      // .then(() => console.log('State', this.state));;
   }
 
   setResources = () => {
@@ -50,47 +51,22 @@ class App extends Component {
           resources: data
         })
       })
-      .then(() => console.log('State', this.state));;
+      // .then(() => console.log('State', this.state));;
   }
 
-  handleAddCategory = category => {
-    this.setState({
-      categories: [...this.state.categories, category]
-    })
-  }
+  // setComments = () => {
+    // ResourcesApiService.getComments()
+      // .then((data) => {
+        // this.setState({
+          // comments: data
+        // })
+      // })
+      // .then(() => console.log('State', this.state));;
+  // }
 
-  handleAddResource = resource => {
-    this.setState({
-      resources: [...this.state.resources, resource]
-    })
-  }
-
-  handleAddComment = comment => {
-    this.setState({
-      comments: [...this.state.comments, comment]
-    })
-  }
-
-  handleAddUser = user => {
-    this.setState({
-      users: [...this.state.users, user]
-    })
-  }
-  
   render() {
-    const value = {
-      resources: this.state.resources,
-      user: this.state.user,
-      categories: this.state.categories,
-      comments: this.state.comments,
-      addCategory: this.handleAddCategory,
-      addResource: this.handleAddResource,
-      addComment: this.handleAddComment,
-      addUser: this.handleAddUser,
-    };
-   
     return (
-      <GeekBoxContext.Provider value={value}>
+      // <GeekBoxContext.Provider value={value}>
         <div className="App">
           <header className="App__nav">
             <Nav />
@@ -140,7 +116,7 @@ class App extends Component {
           </main>
           <Footer />
         </div>
-      </GeekBoxContext.Provider>
+      // </GeekBoxContext.Provider>
     );
   }
 }

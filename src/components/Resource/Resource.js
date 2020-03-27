@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { ResourceStarRating } from '../ResourceStarRating/ResourceStarRating';
+import ResourcesApiService from '../../services/resources-api-service';
 import GeekBoxContext from '../../GeekBoxContext';
 import './Resource.css';
 
@@ -20,18 +21,28 @@ class Resource extends Component {
     }
 }
 
-truncate = (text) => {
-    const words = text.split(' ');
+  truncate = (text) => {
+      const words = text.split(' ');
 
-    if (words.length > 5) {
-        return `${words.slice(0, 5).join(' ')} ...`;
-    }
+      if (words.length > 5) {
+          return `${words.slice(0, 5).join(' ')} ...`;
+      }
 
-    return text;
-}
+      return text;
+  }
+
+  componentDidMount() {
+    ResourcesApiService.getResourceComments(this.props.resource.id)
+      // .then((data) => {
+        // data.json().map((comment) => this.context.addComment(comment))
+      // })
+      .then((res) => console.log('Comment state', res))
+  }
+
   render() {
     const { resource } = this.props;
-    const { comments } = this.context;
+    const comments = this.context.comments;
+    console.log('Comments', comments);
     const { category } = this.props.location.state;
     const filteredComments = comments.filter(comment => comment.resourceId === resource.id);
     const totalRating = filteredComments.map(comment => comment.rating).reduce((a, b) => a + b, 0);
