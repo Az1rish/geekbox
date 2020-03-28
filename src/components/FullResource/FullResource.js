@@ -9,7 +9,7 @@ class FullResource extends Component {
   static contextType = GeekBoxContext;
 
   ResourceDescription = ( resource ) => {
-    const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
+    const { user } = resource
     const postTime = new Date(resource.date_created);
     postTime.toString();
       return (
@@ -29,7 +29,7 @@ class FullResource extends Component {
             <p>
               Posted by
               {' '}
-              {user.firstName}
+              {user.first_name}
               {' '}
               on
               {' '}
@@ -42,7 +42,7 @@ class FullResource extends Component {
   
   
   ResourceComments = ( comments = [], resource ) => {
-    const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
+    const { user } = resource
     const filteredComments = comments.filter(comment => comment.resourceId.toString() === resource.id.toString());
  
     return (
