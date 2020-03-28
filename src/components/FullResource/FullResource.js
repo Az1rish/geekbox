@@ -42,12 +42,14 @@ class FullResource extends Component {
   
   
   ResourceComments = ( comments = [], resource ) => {
-    const { user } = resource
-    const filteredComments = comments.filter(comment => comment.resource.id.toString() === resource.id.toString());
+    
+    // console.log('comments', comments)
  
     return (
       <ul className="ResourcePage__comment-list">
-        {filteredComments.map((comment) => (
+        {comments.map((comment) => {
+          const { user } = comment;
+          return (
           <li key={comment.id} className="ResourcePage__comment">
             <p className="ResourcePage__comment-text">
               <FontAwesomeIcon icon={'comments'} />
@@ -57,10 +59,11 @@ class FullResource extends Component {
             <p className="ResourcePage__comment-user">
               <ResourceStarRating rating={comment.rating} />
               {' - '}
-              {user.firstName}
+              {user.first_name}
             </p>
           </li>
-        ))}
+        )}
+        )}
       </ul>
     );
   }
