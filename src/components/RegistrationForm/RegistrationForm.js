@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import GeekBoxContext from '../../GeekBoxContext';
+import AuthApiService from '../../services/auth-api-service';
 import './RegistrationForm.css';
 
 export default class RegistrationForm extends Component {
+    state = {
+        error: null
+    }
     static propTypes = {
         onRegister: PropTypes.func
     };
@@ -11,30 +16,62 @@ export default class RegistrationForm extends Component {
         onRegister: () => {}
     };
 
+    static contextType = GeekBoxContext;
+
     handleSubmit = (e) => {
         e.preventDefault();
-
+        const { first_name, last_name, user_name, password } = e.target;
+        console.log('first', first_name.value)
         const { onRegister } = this.props;
-
-        onRegister();
-
-        // Add post user function here to post to db
+        const { clearError, setError } = this.context;
+        clearError();
+        AuthApiService.postUser({
+            first_name: first_name.value,
+            last_name: last_name.value,
+            user_name: user_name.value,
+            password: password.value
+        })
+            .then(() => {
+                first_name.value = '';
+                last_name.value = '';
+                user_name.value = '';
+                password.value = '';
+                onRegister();
+            })
+            .then(() => console.log('submitted'))
+            .catch(setError);
     }
 
     render() {
+        console.log(this.context)
+        const { error } = this.state;
         return (
-            <form className="RegistrationForm">
-                {/* <div role='alert'> */}
-                    {/* {error && <p className="red">{error}</p>} */}
-                {/* </div> */}
-                <div className="full_name">
-                    <label htmlFor="RegistrationForm__full_name">
-                        Full Name 
+            <form 
+                className="RegistrationForm" 
+                onSubmit={this.handleSubmit}
+            >
+                <div role='alert'>
+                    {error && <p className="red">{error}</p>}
+                </div>
+                <div className="first_name">
+                    <label htmlFor="RegistrationForm__first_name">
+                        First Name 
                     </label>
                     <input
-                        name="full_name"
+                        name="first_name"
                         type="text"
-                        id="RegistrationForm__full_name"
+                        id="RegistrationForm__first_name"
+                        required
+                    />
+                </div>
+                <div className="last_name">
+                    <label htmlFor="RegistrationForm__last_name">
+                        Last Name 
+                    </label>
+                    <input
+                        name="last_name"
+                        type="text"
+                        id="RegistrationForm__last_name"
                         required
                     />
                 </div>
