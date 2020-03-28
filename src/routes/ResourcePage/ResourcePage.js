@@ -3,10 +3,29 @@ import { Link } from 'react-router-dom';
 import CommentForm from '../../components/CommentForm/CommentForm';
 import FullResource from '../../components/FullResource/FullResource';
 import GeekBoxContext from '../../GeekBoxContext';
+import ResourcesApiService from '../../services/resources-api-service';
 import './ResourcePage.css';
 
 export default class ResourcePage extends Component {
     static contextType = GeekBoxContext;
+
+    componentDidMount() {
+        const { resourceId } = this.props.match.params;
+        console.log('Id', resourceId)
+        const {
+            clearError,
+            setError,
+            setResource,
+            setComments
+        } = this.context;
+        clearError();
+        ResourcesApiService.getResource(resourceId)
+            .then(setResource)
+            .catch(setError);
+        ResourcesApiService.getResourceComments(resourceId)
+            .then(setComments)
+            .catch(setError);
+    }
 
     renderResource = (id) => {
         const resource = this.context.resourceList.filter(resource => resource.id.toString() === id)[0];
@@ -18,6 +37,7 @@ export default class ResourcePage extends Component {
     }
 
     render() {
+        console.log('context', this.context)
         const { resourceId } = this.props.match.params;
         const { categories, resourceList } = this.context;
         const { category } = this.props.location.state;

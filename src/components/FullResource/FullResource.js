@@ -43,7 +43,7 @@ class FullResource extends Component {
   
   ResourceComments = ( comments = [], resource ) => {
     const { user } = resource
-    const filteredComments = comments.filter(comment => comment.resourceId.toString() === resource.id.toString());
+    const filteredComments = comments.filter(comment => comment.resource.id.toString() === resource.id.toString());
  
     return (
       <ul className="ResourcePage__comment-list">

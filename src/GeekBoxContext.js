@@ -81,7 +81,7 @@ export class GeekBoxProvider extends Component {
     
       setComments = comments => {
         this.setState({
-          comments: ({ comments })
+          comments
         })
       }
 
