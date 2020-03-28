@@ -21,16 +21,18 @@ export default class RegistrationForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { first_name, last_name, user_name, password } = e.target;
-        console.log('first', first_name.value)
+        // console.log('first', first_name.value)
         const { onRegister } = this.props;
         const { clearError, setError } = this.context;
-        clearError();
-        AuthApiService.postUser({
+        const newUser = {
             first_name: first_name.value,
             last_name: last_name.value,
             user_name: user_name.value,
             password: password.value
-        })
+        }
+        console.log('User', newUser)
+        clearError();
+        AuthApiService.postUser(newUser)
             .then(() => {
                 first_name.value = '';
                 last_name.value = '';
