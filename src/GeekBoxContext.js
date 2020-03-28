@@ -9,8 +9,12 @@ const GeekBoxContext = React.createContext({
     user: {},
     setUser: () => {},
     categories: [],
+    setCategories: () => {},
     addCategory: () => {},
     resource: nullResource,
+    resourceList: [],
+    setResourceList: () => {},
+    deleteResource: () => {},
     setResource: () => {},
     updateResource: () => {},
     clearResource: () => {},
@@ -25,10 +29,34 @@ const GeekBoxContext = React.createContext({
 export default GeekBoxContext;
 
 export class GeekBoxProvider extends Component {
+    state = {
+        user: {},
+        categories: [],
+        resource: nullResource,
+        resourceList: [],
+        comments: [],
+        error: null
+    }
     addCategory = category => {
         this.setState({
           categories: [...this.state.categories, category]
         })
+      }
+
+      setCategories = (categories) => {
+          this.setState({ categories });
+      }
+
+      setResourceList = (resourceList) => {
+          this.setState({ resourceList })
+      }
+
+      deleteResource = (resourceId) => {
+          const { resourceList } = this.state;
+          const newResources = resourceList.filter((resource) => resource.id !== resourceId);
+          this.setState({
+              resourceList: newResources
+          });
       }
     
       setResource = resource => {
@@ -51,10 +79,18 @@ export class GeekBoxProvider extends Component {
           this.setComments([]);
       }
     
-      addComment = comment => {
+      setComments = comments => {
         this.setState({
-          comments: [...this.state.comments, comment]
+          comments: ({ comments })
         })
+      }
+
+      addComment = comment => {
+        const { comments } = this.state;
+        this.setComments([
+            ...comments,
+            comment
+        ]);
       }
     
       setUser = user => {
@@ -62,18 +98,42 @@ export class GeekBoxProvider extends Component {
           user
         })
       }
+
+      setError = (error) => {
+          this.setState({ error });
+      }
+
+      clearError = () => {
+          this.setState({ error: null });
+      }
       
       render() {
+        const { resource, resourceList, user, categories, comments, error } = this.state;
+        const { children } = this.props;
         const value = {
-          resources: this.state.resources,
-          user: this.state.user,
-          categories: this.state.categories,
-          comments: this.state.comments,
+          resource,
+          resourceList,
+          user,
+          categories,
+          comments,
+          error,
           addCategory: this.addCategory,
+          setCategories: this.setCategories,
           setResource: this.setResource,
           updateResource: this.updateResource,
           clearResource: this.clearResource,
+          setComments: this.setComments,
           addComment: this.addComment,
           setUser: this.setUser,
+          setError: this.setError,
+          clearError: this.clearError,
+          setResourceList: this.setResourceList,
+          deleteResource: this.deleteResource
         };
+        return (
+            <GeekBoxContext.Provider value={value}>
+                {children}
+            </GeekBoxContext.Provider>
+        )
+      }
 }

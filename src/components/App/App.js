@@ -11,7 +11,7 @@ import ResourceListPage from '../../routes/ResourceListPage/ResourceListPage';
 import ResourcePage from '../../routes/ResourcePage/ResourcePage';
 import SignInPage from '../../routes/SignInPage/SignInPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
-// import GeekBoxContext from '../../GeekBoxContext';
+import GeekBoxContext from '../../GeekBoxContext';
 import CategoriesApiService from '../../services/categories-api-service';
 import ResourcesApiService from '../../services/resources-api-service';
 import './App.css';
@@ -21,52 +21,38 @@ class App extends Component {
     super(props)
   
     this.state = {
-       categories: [],
-       resources: [],
+      //  categories: [],
+      //  resources: [],
        user: {},
-       comments: []
+      //  comments: []
     }
   }
 
+  static contextType = GeekBoxContext;
+
   componentDidMount() {
     this.setCategories();
-    this.setResources()
-    // this.setComments()
+    this.setResources();
   }
 
   setCategories = () => {
     CategoriesApiService.getCategories()
       .then((data) => {
-        this.setState({
-          categories: data
-        })
+        this.context.setCategories(data)
       })
-      // .then(() => console.log('State', this.state));;
   }
 
   setResources = () => {
     ResourcesApiService.getResources()
       .then((data) => {
-        this.setState({
-          resources: data
-        })
+        this.context.setResourceList(data)
       })
-      // .then(() => console.log('State', this.state));;
   }
 
-  // setComments = () => {
-    // ResourcesApiService.getComments()
-      // .then((data) => {
-        // this.setState({
-          // comments: data
-        // })
-      // })
-      // .then(() => console.log('State', this.state));;
-  // }
-
   render() {
+    // console.log('context', this.context)
+    // console.log('state', this.state)
     return (
-      // <GeekBoxContext.Provider value={value}>
         <div className="App">
           <header className="App__nav">
             <Nav />
@@ -116,7 +102,6 @@ class App extends Component {
           </main>
           <Footer />
         </div>
-      // </GeekBoxContext.Provider>
     );
   }
 }

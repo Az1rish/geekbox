@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { ResourceStarRating } from '../ResourceStarRating/ResourceStarRating';
-import ResourcesApiService from '../../services/resources-api-service';
 import GeekBoxContext from '../../GeekBoxContext';
 import './Resource.css';
 
@@ -31,25 +30,11 @@ class Resource extends Component {
       return text;
   }
 
-  componentDidMount() {
-    ResourcesApiService.getResourceComments(this.props.resource.id)
-      // .then((data) => {
-        // data.json().map((comment) => this.context.addComment(comment))
-      // })
-      .then((res) => console.log('Comment state', res))
-  }
-
   render() {
     const { resource } = this.props;
-    const comments = this.context.comments;
-    console.log('Comments', comments);
     const { category } = this.props.location.state;
-    const filteredComments = comments.filter(comment => comment.resourceId === resource.id);
-    const totalRating = filteredComments.map(comment => comment.rating).reduce((a, b) => a + b, 0);
-    const averageRating = totalRating/filteredComments.length;
-    const postTime = new Date(resource.date_created);
-    postTime.toString();
-    const user = this.context.users.filter(user => user.id === resource.userId)[0];
+    const { numOfComments, avgCommentRating } = resource;
+    const resourceUser = resource.user
    
     return (
       <Link to={{
@@ -69,15 +54,15 @@ class Resource extends Component {
             <p>
               Posted by
               {' '}
-              {user.firstName}
+              {resourceUser.first_name}
             </p>
           </div>
   
           <div className="resource__comments">
-            <ResourceStarRating rating={Math.floor(averageRating)} />
+            <ResourceStarRating rating={Math.floor(avgCommentRating)} />
             {' '}
             <span id="resource__comment-count">
-              {this.readableCommentCount(filteredComments.length)}
+              {this.readableCommentCount(numOfComments)}
             </span>
           </div>
         </div>
