@@ -21,7 +21,6 @@ export default class RegistrationForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { first_name, last_name, user_name, password } = e.target;
-        // console.log('first', first_name.value)
         const { onRegister } = this.props;
         const { clearError, setError } = this.context;
         const newUser = {
@@ -30,7 +29,6 @@ export default class RegistrationForm extends Component {
             user_name: user_name.value,
             password: password.value
         }
-        console.log('User', newUser)
         clearError();
         AuthApiService.postUser(newUser)
             .then(() => {
@@ -40,7 +38,6 @@ export default class RegistrationForm extends Component {
                 password.value = '';
                 onRegister();
             })
-            .then(() => console.log('submitted'))
             .catch(setError);
     }
 

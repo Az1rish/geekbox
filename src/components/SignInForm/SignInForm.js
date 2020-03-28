@@ -17,18 +17,18 @@ export default class SignInForm extends Component {
     static contextType = GeekBoxContext;
     
     static propTypes = {
-        onLoginSuccess: PropTypes.func
+        onSignIn: PropTypes.func
     }
 
     static defaultProps = {
-        onLoginSuccess: () => {}
+        onSignIn: () => {}
     }
 
     handleSubmitJwtAuth = (e) => {
       e.preventDefault();
       const { user_name, password } = e.target;
       const { setUser, clearError, setError } = this.context;
-      const { onLoginSuccess } = this.props;
+      const { onSignIn } = this.props;
       clearError();
       AuthApiService.postLogin({
         user_name: user_name.value,
@@ -39,21 +39,21 @@ export default class SignInForm extends Component {
           user_name.value = '';
           password.value = '';
           TokenService.saveAuthToken(res.authToken);
-          onLoginSuccess();
+          onSignIn();
         })
         .catch(setError)
     }
 
     render() {
-        const { error } = this.context;
+        console.log('context', this.context);
         return (
           <form
             className="LoginForm"
             onSubmit={this.handleSubmitJwtAuth}
           >
-            <div role="alert">
-              {error && <p className="red">{error}</p>}
-            </div>
+            {/* <div role="alert"> */}
+              {/* {error && <p className="red">{error}</p>} */}
+            {/* </div> */}
             <div className="user_name">
               <label htmlFor="LoginForm__user_name">
                 User name
