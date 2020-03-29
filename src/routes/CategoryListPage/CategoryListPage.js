@@ -8,6 +8,7 @@ class CategoryListPage extends Component {
     static contextType = GeekBoxContext;
     
     renderCategories() {
+        console.log('cat context', this.context);
         const { categories } = this.context;
         return categories.map((category) => (
             <Category

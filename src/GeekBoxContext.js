@@ -16,6 +16,7 @@ const GeekBoxContext = React.createContext({
     setResourceList: () => {},
     deleteResource: () => {},
     setResource: () => {},
+    addResource: () => {},
     updateResource: () => {},
     clearResource: () => {},
     comments: [],
@@ -63,6 +64,12 @@ export class GeekBoxProvider extends Component {
         this.setState({
           resource
         });
+      }
+
+      addResource = resource => {
+        this.setState({
+          resourceList: [...this.state.resourceList, resource]
+        })
       }
 
       updateResource = (resource) => {
@@ -120,6 +127,7 @@ export class GeekBoxProvider extends Component {
           addCategory: this.addCategory,
           setCategories: this.setCategories,
           setResource: this.setResource,
+          addResource: this.addResource,
           updateResource: this.updateResource,
           clearResource: this.clearResource,
           setComments: this.setComments,

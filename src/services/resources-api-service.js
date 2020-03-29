@@ -19,7 +19,7 @@ const ResourcesApiService = {
                 'content-type': 'application/json',
                 authorization: `bearer ${TokenService.getAuthToken()}`
             },
-            body: newResource
+            body: JSON.stringify(newResource)
         })
             .then((res) => ((!res.ok)
                 ? res.json().then((e) => Promise.reject(e))
