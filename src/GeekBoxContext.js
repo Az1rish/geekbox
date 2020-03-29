@@ -39,7 +39,7 @@ export class GeekBoxProvider extends Component {
     }
     addCategory = category => {
         this.setState({
-          categories: [...this.state.categories, category]
+          categories: [...this.state.categories, category.category]
         })
       }
 
