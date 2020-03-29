@@ -9,7 +9,7 @@ class FullResource extends Component {
   static contextType = GeekBoxContext;
 
   ResourceDescription = ( resource ) => {
-    const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
+    const { user } = resource
     const postTime = new Date(resource.date_created);
     postTime.toString();
       return (
@@ -29,7 +29,7 @@ class FullResource extends Component {
             <p>
               Posted by
               {' '}
-              {user.firstName}
+              {user.first_name}
               {' '}
               on
               {' '}
@@ -42,12 +42,11 @@ class FullResource extends Component {
   
   
   ResourceComments = ( comments = [], resource ) => {
-    const user = this.context.users.filter(user => user.id.toString() === resource.userId.toString())[0];
-    const filteredComments = comments.filter(comment => comment.resourceId.toString() === resource.id.toString());
- 
     return (
       <ul className="ResourcePage__comment-list">
-        {filteredComments.map((comment) => (
+        {comments.map((comment) => {
+          const { user } = comment;
+          return (
           <li key={comment.id} className="ResourcePage__comment">
             <p className="ResourcePage__comment-text">
               <FontAwesomeIcon icon={'comments'} />
@@ -57,10 +56,11 @@ class FullResource extends Component {
             <p className="ResourcePage__comment-user">
               <ResourceStarRating rating={comment.rating} />
               {' - '}
-              {user.firstName}
+              {user.first_name}
             </p>
           </li>
-        ))}
+        )}
+        )}
       </ul>
     );
   }

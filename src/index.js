@@ -8,6 +8,7 @@ import {
     faBoxOpen,
     faComments
 } from '@fortawesome/free-solid-svg-icons';
+import { GeekBoxProvider } from './GeekBoxContext';
 import './index.css';
 import App from './components/App/App';
 
@@ -20,7 +21,9 @@ library.add(
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <GeekBoxProvider>
+            <App />
+        </GeekBoxProvider>
     </BrowserRouter>,
     document.getElementById('root')
 );

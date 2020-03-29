@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+import CategoriesApiService from '../../services/categories-api-service';
 import GeekBoxContext from '../../GeekBoxContext';
 import './AddCategoryForm.css';
 
@@ -24,23 +24,31 @@ class AddCategoryForm extends Component {
 
     static contextType = GeekBoxContext;
 
-    updateList = (title) => {
-      const newCategory = {
-          id: uuidv4(),
-          title,
-          userId: 1,
-          date_created: new Date()
-      };
+    // updateList = (title) => {
+      // const newCategory = {
+          // id: uuidv4(),
+          // title,
+          // userId: 1,
+          // date_created: new Date()
+      // };
 
-      this.context.addCategory(newCategory)
-  }
+      // this.context.addCategory(newCategory)
+  // }
 
     handleSubmitNewCategory = (e) => {
         e.preventDefault();
         const { title } = e.target;
         const { onAddCategorySuccess } = this.props;
-        this.updateList(title.value);
-        onAddCategorySuccess();
+        const { addCategory, clearError, setError } = this.context;
+        const newCategory = { title: title.value }
+        clearError();
+        CategoriesApiService.postCategory(newCategory)
+          .then(addCategory)
+          .then(() => {
+            title.value = '';
+            onAddCategorySuccess();
+          })
+          .catch(setError);   
     }
 
     render() {

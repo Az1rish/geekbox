@@ -19,7 +19,7 @@ const CategoriesApiService = {
                 'content-type': 'application/json',
                 authorization: `bearer ${TokenService.getAuthToken()}`
             },
-            body: newCategory
+            body: JSON.stringify(newCategory)
         })
             .then((res) => ((!res.ok)
                 ? res.json().then((e) => Promise.reject(e))
@@ -30,8 +30,7 @@ const CategoriesApiService = {
             headers: {
                 'content-type': 'application/json',
                 authorization: `bearer ${TokenService.getAuthToken()}`
-            },
-            body: newCategory
+            }
         })
             .then((res) => ((!res.ok)
                 ? res.json().then((e) => Promise.reject(e))

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import GeekBoxContext from '../../GeekBoxContext';
 import './CommentForm.css';
+import ResourcesApiService from '../../services/resources-api-service';
 
 class CommentForm extends Component {
   static contextType = GeekBoxContext;
@@ -10,25 +10,14 @@ class CommentForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { text, rating } = e.target;
-        const { resource, category } = this.props;
-        const newComment = {
-          id: uuidv4(),
-          comment: text.value,
-          rating: Number(rating.value),
-          date_created: new Date(),
-          resourceId: resource.id,
-          userId: 1
-        }
-
-        const { history } = this.props;
-        this.context.addComment(newComment);
-        text.value = '';
-        history.push({
-          pathname: `/resource/${resource.id}`,
-          state: {
-              category
-          }
-        });
+        const { resource } = this.props;
+        const { addComment, setError } = this.context;
+        ResourcesApiService.postComment(resource.id, text.value, Number(rating.value))
+          .then(addComment)
+          .then(() => {
+            text.value = ''
+          })
+          .catch(setError)
     }
 
     render() {

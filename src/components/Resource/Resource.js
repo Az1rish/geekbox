@@ -20,25 +20,21 @@ class Resource extends Component {
     }
 }
 
-truncate = (text) => {
-    const words = text.split(' ');
+  truncate = (text) => {
+      const words = text.split(' ');
 
-    if (words.length > 5) {
-        return `${words.slice(0, 5).join(' ')} ...`;
-    }
+      if (words.length > 5) {
+          return `${words.slice(0, 5).join(' ')} ...`;
+      }
 
-    return text;
-}
+      return text;
+  }
+
   render() {
     const { resource } = this.props;
-    const { comments } = this.context;
     const { category } = this.props.location.state;
-    const filteredComments = comments.filter(comment => comment.resourceId === resource.id);
-    const totalRating = filteredComments.map(comment => comment.rating).reduce((a, b) => a + b, 0);
-    const averageRating = totalRating/filteredComments.length;
-    const postTime = new Date(resource.date_created);
-    postTime.toString();
-    const user = this.context.users.filter(user => user.id === resource.userId)[0];
+    const { numOfComments, avgCommentRating } = resource;
+    const resourceUser = resource.user
    
     return (
       <Link to={{
@@ -58,15 +54,15 @@ truncate = (text) => {
             <p>
               Posted by
               {' '}
-              {user.firstName}
+              {resourceUser.first_name}
             </p>
           </div>
   
           <div className="resource__comments">
-            <ResourceStarRating rating={Math.floor(averageRating)} />
+            <ResourceStarRating rating={Math.floor(avgCommentRating)} />
             {' '}
             <span id="resource__comment-count">
-              {this.readableCommentCount(filteredComments.length)}
+              {this.readableCommentCount(numOfComments)}
             </span>
           </div>
         </div>

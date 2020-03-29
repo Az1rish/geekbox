@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+import ResourcesApiService from '../../services/resources-api-service';
 import GeekBoxContext from '../../GeekBoxContext';
 import './AddResourceForm.css';
 
@@ -28,18 +28,27 @@ class AddResourceForm extends Component {
         e.preventDefault();
         const { title, url, description } = e.target;
         const { onAddResourceSuccess } = this.props;
+        const { addResource, clearError, setError } = this.context;
         const { category } = this.props.location.state;
+
         const newResource = {
-          id: uuidv4(),
           title: title.value,
           url: url.value,
           description: description.value,
-          date_created: new Date(),
-          userId: 1,
-          categoryId: category.id
+          category_id: category.id,
         }
-        this.context.addResource(newResource);
-        onAddResourceSuccess();
+        clearError();
+        ResourcesApiService.postResource(newResource)
+          .then((res) => {
+            addResource(res);
+          })
+          .then(() => {
+            title.value = '';
+            url.value = '';
+            description.value = ''
+            onAddResourceSuccess()
+          })
+          .catch(setError)
     }
 
     render() {
