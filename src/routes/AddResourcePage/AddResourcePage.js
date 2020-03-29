@@ -23,7 +23,6 @@ class AddResourcePage extends Component {
     onAddResource = () => {
         const { history } = this.props;
         const { category } = this.props.location.state;
-        console.log('cat', category)
         history.push({
             pathname: `/categories/${category.id}`,
             state: {

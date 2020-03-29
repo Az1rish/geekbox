@@ -45,7 +45,6 @@ export default class SignInForm extends Component {
     }
 
     render() {
-        // console.log('context', this.context);
         return (
           <form
             className="LoginForm"

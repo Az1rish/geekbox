@@ -52,7 +52,6 @@ class AddResourceForm extends Component {
     }
 
     render() {
-        // console.log('cat', this.props.location.state)
         const { error } = this.state;
         return (
           <form

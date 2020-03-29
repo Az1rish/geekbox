@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import GeekBoxContext from '../../GeekBoxContext';
+import TokenService from '../../services/token-service';
 import Resource from '../../components/Resource/Resource';
 import './ResourceListPage.css';
 
@@ -35,14 +36,16 @@ export default class ResourceListPage extends Component {
                 <ul className="ResourcesList">
                     {this.renderResources()}
                 </ul>
-                <Link to={{
-                    pathname: '/resource/add',
-                    state: {
-                        category
-                    }
-                }}>
-                    + Add New Resource
-                </Link>
+                {TokenService.hasAuthToken()
+                    ? <Link to={{
+                            pathname: '/resource/add',
+                            state: {
+                                category
+                            }
+                        }}>
+                             + Add New Resource
+                        </Link>
+                    : null}
             </div>
             
         );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Category from '../../components/Category/Category';
+import TokenService from '../../services/token-service';
 import GeekBoxContext from '../../GeekBoxContext';
 import './CategoryListPage.css';
 
@@ -8,7 +9,6 @@ class CategoryListPage extends Component {
     static contextType = GeekBoxContext;
     
     renderCategories() {
-        console.log('cat context', this.context);
         const { categories } = this.context;
         return categories.map((category) => (
             <Category
@@ -22,7 +22,9 @@ class CategoryListPage extends Component {
         return (
             <ul className="CategoryListPage">
                 {this.renderCategories()}
-                <Link to='/categories/add' >+ Add New Category</Link>
+                {TokenService.hasAuthToken() 
+                    ? <Link to='/categories/add' >+ Add New Category</Link> 
+                    : null}
             </ul>
         );
     }

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Category.css';
 
 export default function Category(props) {
-    console.log('cat props', props);
     const { category } = props;
     return (
         <Link to={{

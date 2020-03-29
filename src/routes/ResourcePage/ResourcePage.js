@@ -11,7 +11,6 @@ export default class ResourcePage extends Component {
 
     componentDidMount() {
         const { resourceId } = this.props.match.params;
-        console.log('Id', resourceId)
         const {
             clearError,
             setError,
@@ -37,7 +36,6 @@ export default class ResourcePage extends Component {
     }
 
     render() {
-        console.log('context', this.context)
         const { resourceId } = this.props.match.params;
         const { categories, resourceList } = this.context;
         const { category } = this.props.location.state;

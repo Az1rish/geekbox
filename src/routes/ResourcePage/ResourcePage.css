@@ -1,3 +1,17 @@
 .ResourcePage {
     margin: 0 20px 20px 20px;
 }
+
+.ResourcePage__comment-list {
+    background-color: gray;
+    border: solid black 1px;
+    border-radius: 10px;
+}
+
+.ResourcePage__comment, .ResourcePage__comment-text svg, .ResourcePage__comment-text, .ResourcePage__comment-user, .ResourceStarRating svg, .ResourceStarRating{
+    background-color: gray;
+}
+
+.ResourcePage__comment-text {
+    text-align: left;
+}

@@ -138,6 +138,7 @@ export class GeekBoxProvider extends Component {
           setResourceList: this.setResourceList,
           deleteResource: this.deleteResource
         };
+        console.log('comments', comments)
         return (
             <GeekBoxContext.Provider value={value}>
                 {children}

@@ -42,9 +42,6 @@ class FullResource extends Component {
   
   
   ResourceComments = ( comments = [], resource ) => {
-    
-    // console.log('comments', comments)
- 
     return (
       <ul className="ResourcePage__comment-list">
         {comments.map((comment) => {
