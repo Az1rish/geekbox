@@ -24,7 +24,7 @@ class Nav extends Component {
                 </Link>
                 <span className="links">
                     <Link to='/categories'>
-                        Home
+                        Categories
                     </Link>
                     {" | "}
                     <Link to='/register'>
