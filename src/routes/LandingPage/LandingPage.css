@@ -1,0 +1,27 @@
+.instructions {
+    text-align: left;
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    padding-bottom: 2rem;
+    line-height: 1.5rem;
+    background-color: #00cc00;
+    border: 2px gray solid;
+    border-radius: 10px;
+}
+
+.innerInstructions {
+    text-align: left;
+    list-style-type: square;
+    padding-left: 2rem;
+    line-height: 1.7rem;
+    background-color: #00cc00;
+}
+
+/* .instructions ul { */
+    /* text-align: left; */
+/* } */
+
+.innerLeft {
+    text-align: left;
+    background-color: #00cc00;
+}
