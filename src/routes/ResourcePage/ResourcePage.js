@@ -49,12 +49,13 @@ export default class ResourcePage extends Component {
                     ? <CommentForm category={category} resource={resource} />
                     : <p className='black'>Please register an account and sign in to add a comment.</p>}
                 <Link to='/categories'>Return to List of Categories</Link>
+                {' | '}
                 <Link to={{
-        pathname: `/categories/${currentCategory.id}`,
-        state: {
-            category
-        }
-    }}>Return to {currentCategory.title}</Link>
+                    pathname: `/categories/${currentCategory.id}`,
+                    state: {
+                        category
+                    }
+                }}>Return to {currentCategory.title} category</Link>
             </div>
         )
     }
