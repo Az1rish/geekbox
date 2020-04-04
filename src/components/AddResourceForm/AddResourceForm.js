@@ -74,8 +74,8 @@ class AddResourceForm extends Component {
               />
             </div>
             <div className="url">
-              <label htmlFor="AddResourceForm__url">
-                URL (Web Address)
+              <label htmlFor="AddResourceForm__url" className="AddResourceUrl">
+                URL (Web Address, should be formatted like this "http://www.whatever.com")
               </label>
               <input
                 required

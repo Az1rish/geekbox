@@ -20,3 +20,9 @@
     margin: 5px;
     border: 1px solid gray;
 }
+
+.AddResourceUrl {
+    display: block;
+    width: 60%;
+    margin: auto;
+}
