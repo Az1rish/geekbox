@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
 import CommentForm from '../../components/CommentForm/CommentForm';
 import FullResource from '../../components/FullResource/FullResource';
 import GeekBoxContext from '../../GeekBoxContext';
@@ -44,7 +45,9 @@ export default class ResourcePage extends Component {
         return (
             <div className="ResourcePage">
                 {this.renderResource(resourceId)}
-                <CommentForm category={category} resource={resource} />
+                {TokenService.hasAuthToken()
+                    ? <CommentForm category={category} resource={resource} />
+                    : <p className='black'>Please register an account and sign in to add a comment.</p>}
                 <Link to='/categories'>Return to List of Categories</Link>
                 <Link to={{
         pathname: `/categories/${currentCategory.id}`,

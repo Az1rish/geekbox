@@ -98,7 +98,7 @@ export default class RegistrationForm extends Component {
                         Password must contain at least 1 uppercase letter, 1 lower case letter and 1 number, be at least 8 characters long and contain no spaces
                     </p>
                 </div>
-                <button type="submit">
+                <button type="submit" className="register">
                     Register
                 </button>
             </form> 

@@ -26,10 +26,11 @@ class FullResource extends Component {
             <p className="FullResource__description">
               {resource.description}
             </p>
-            <p>
-              Posted by
+            <p className="innerRight">
+              {'~ '}
+              Resource added by
               {' '}
-              {user.first_name}
+              {user.user_name}
               {' '}
               on
               {' '}
@@ -50,13 +51,13 @@ class FullResource extends Component {
           <li key={comment.id} className="ResourcePage__comment">
             <p className="ResourcePage__comment-text">
               <FontAwesomeIcon icon={'comments'} />
-              {' '}
+              {' -  '}
               {comment.comment}
             </p>
             <p className="ResourcePage__comment-user">
               <ResourceStarRating rating={comment.rating} />
               {' - '}
-              {user.first_name}
+              {user.user_name}
             </p>
           </li>
         )}
