@@ -30,7 +30,7 @@ export default class SignInForm extends Component {
       const { setUser, clearError, setError } = this.context;
       const { onSignIn } = this.props;
       clearError();
-      AuthApiService.postLogin({
+      AuthApiService.postSignIn({
         user_name: user_name.value,
         password: password.value
       })
@@ -47,35 +47,35 @@ export default class SignInForm extends Component {
     render() {
         return (
           <form
-            className="LoginForm"
+            className="SignInForm"
             onSubmit={this.handleSubmitJwtAuth}
           >
             {/* <div role="alert"> */}
               {/* {error && <p className="red">{error}</p>} */}
             {/* </div> */}
             <div className="user_name">
-              <label htmlFor="LoginForm__user_name">
+              <label htmlFor="SignInForm__user_name">
                 User name
               </label>
               <input
                 required
                 name="user_name"
-                id="LoginForm__user_name"
+                id="SignInForm__user_name"
               />
             </div>
             <div className="password">
-              <label htmlFor="LoginForm__password">
+              <label htmlFor="SignInForm__password">
                 Password
               </label>
               <input
                 required
                 name="password"
                 type="password"
-                id="LoginForm__password"
+                id="SignInForm__password"
               />
             </div>
-            <button type="submit">
-              Login
+            <button type="submit" className="SignIn">
+              SignIn
             </button>
           </form>
         );

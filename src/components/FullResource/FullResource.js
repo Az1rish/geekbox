@@ -18,14 +18,14 @@ class FullResource extends Component {
             <h2 className="FullResource__heading">
               {resource.title}
             </h2>
-            <a href={resource.url} target="_blank" rel="noopener noreferrer">
-              <h3 className="FullResource__url">
-                Go there now!
-              </h3>
-            </a>
             <p className="FullResource__description">
               {resource.description}
             </p>
+            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+              <h3 className="FullResource__url">
+                Go to {resource.title} now!
+              </h3>
+            </a>
             <p className="innerRight">
               {'~ '}
               Resource added by

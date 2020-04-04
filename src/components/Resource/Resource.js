@@ -23,8 +23,8 @@ class Resource extends Component {
   truncate = (text) => {
       const words = text.split(' ');
 
-      if (words.length > 5) {
-          return `${words.slice(0, 5).join(' ')} ...`;
+      if (words.length > 7) {
+          return `${words.slice(0, 7).join(' ')} ...`;
       }
 
       return text;
@@ -51,10 +51,10 @@ class Resource extends Component {
             <p className="resource__description">
               {this.truncate(resource.description)}
             </p>
-            <p>
-              Posted by
+            <p className="little">
+              Resource added by
               {' '}
-              {resourceUser.first_name}
+              {resourceUser.user_name}
             </p>
           </div>
   

@@ -14,3 +14,7 @@
 .resource__comments .ResourceStarRating svg, .resource__comments .ResourceStarRating {
     background-color: #3dcc3d;
 }
+
+.little {
+    font-size: 0.8rem;
+}
