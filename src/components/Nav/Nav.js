@@ -7,11 +7,13 @@ class Nav extends Component {
     render() {
         return (
             <nav className="navBar">
-                <h1>
-                    GeekBox
-                    {' '}
-                    <FontAwesomeIcon icon={'box-open'} />
-                </h1>
+                <Link to="/">
+                    <h1>
+                        GeekBox
+                        {' '}
+                        <FontAwesomeIcon icon={'box-open'} />
+                    </h1>
+                </Link>
                 <span className="links">
                     <Link to='/categories'>
                         Home
