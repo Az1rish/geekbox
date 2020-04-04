@@ -6,13 +6,13 @@ import GeekBoxContext from '../../GeekBoxContext';
 import './SignInForm.css';
 
 export default class SignInForm extends Component {
-    // constructor(props) {
-        // super(props)
+    constructor(props) {
+        super(props)
     
-        // this.state = {
-            // error: null
-        // }
-    // }
+        this.state = {
+            error: null
+        }
+    }
 
     static contextType = GeekBoxContext;
     
@@ -27,7 +27,7 @@ export default class SignInForm extends Component {
     handleSubmitJwtAuth = (e) => {
       e.preventDefault();
       const { user_name, password } = e.target;
-      const { setUser, clearError, setError } = this.context;
+      const { setUser, clearError } = this.context;
       const { onSignIn } = this.props;
       clearError();
       AuthApiService.postSignIn({
@@ -41,18 +41,21 @@ export default class SignInForm extends Component {
           TokenService.saveAuthToken(res.authToken);
           onSignIn();
         })
-        .catch(setError)
+        .catch((res) => {
+          this.setState({ error: res.error })
+        })
     }
 
     render() {
+      const { error } = this.state;
         return (
           <form
             className="SignInForm"
             onSubmit={this.handleSubmitJwtAuth}
           >
-            {/* <div role="alert"> */}
-              {/* {error && <p className="red">{error}</p>} */}
-            {/* </div> */}
+            <div role="alert">
+              {error && <p className="black">{error}</p>}
+            </div>
             <div className="user_name">
               <label htmlFor="SignInForm__user_name">
                 User name

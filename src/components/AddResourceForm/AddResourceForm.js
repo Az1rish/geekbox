@@ -91,7 +91,7 @@ class AddResourceForm extends Component {
                 id="AddResourceForm__description"
               />
             </div>
-            <button type="submit">
+            <button type="submit" class="AddResource">
               Add New Resource
             </button>
           </form>
