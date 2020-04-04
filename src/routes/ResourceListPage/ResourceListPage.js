@@ -20,8 +20,8 @@ export default class ResourceListPage extends Component {
         const { categoryId } = this.props.match.params;
         const { resourceList } = this.context;
         const filteredResources = resourceList.filter(resource => resource.category.id.toString() === categoryId);
-        return !resourceList.length
-            ? <p>Currently no resources available. Feel free to add one.</p>
+        return !filteredResources.length
+            ? <p className="black">Currently no resources available. Feel free to add one.</p>
             : filteredResources.map((resource) => (
                 <Resource
                     key={resource.id}
