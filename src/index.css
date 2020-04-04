@@ -31,3 +31,8 @@ ul {
 a {
   color: #0ff;
 }
+
+.black {
+  color: black;
+  font-weight: bold;
+}

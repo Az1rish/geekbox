@@ -72,7 +72,7 @@ class App extends Component {
             />
           </header>
           <main className="App__main">
-            {hasError && <p className="red">I'm sorry, there appears to be an error.</p>}
+            {hasError && <p className="black">I'm sorry, there appears to be an error.</p>}
             <Switch>
               <Route
                 exact
