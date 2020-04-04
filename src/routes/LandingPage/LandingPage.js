@@ -17,16 +17,16 @@ export default function LandingPage() {
                         <ul className="innerInstructions black">
                             <li className="innerLeft black">Click "Categories" in the nav bar above or "Enter GeekBox" below.</li>
                             <li className="innerLeft black">You will then be taken to a page with buttons that represent the currently available categories. Click a category you're interested in to see the resources that have been added</li>
-                            <li className="innerLeft black">You will then be taken to a page similar to the "Categories" page but this time it will be a list of "Resources" that you can click on. Click one that looks interesting to you.</li>
+                            <li className="innerLeft black">You will then be taken to a page similar to the "Categories" page but this time it will be a list of "Resources" that you can click on. A resource could be anything that can be found on the web: a website, a video, a book, a course, you get the picture. Click one that looks interesting to you.</li>
                             <li className="innerLeft black">On the resource page you will see the name of that resource, a link to their website, a description of the resource and any comments/reviews that other users have left.</li>
                         </ul>
                     </li>
-                    <li className="innerLeft black">If you'd like to register an account and sign in navigation is the same as above but you will also have the capability to add categories, resources and comments/reviews.</li>
+                    <li className="innerLeft black">If you'd like to register an account and sign in, navigation is the same as above, just click register or sign in if you've already registered. You will then have the capability to add categories, resources and comments/reviews.</li>
                 </ul>
-                <p>You can register and sign in if you'd like to add a category, resource, comment or rating</p>
                 {TokenService.hasAuthToken()
                     ? <p className="black">You are already Signed In.</p>
                     : <>
+                        <p>You can register or sign in by clicking one of these links ( you can try out the site by signing in with user_name: User and password: AAaa11!! )</p>
                         <Link to='/register'>Register</Link>
                         <Link to='/signin'>Sign In</Link>
                       </>

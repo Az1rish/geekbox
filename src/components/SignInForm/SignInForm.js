@@ -78,7 +78,7 @@ export default class SignInForm extends Component {
               />
             </div>
             <button type="submit" className="SignIn">
-              SignIn
+              Sign In
             </button>
           </form>
         );

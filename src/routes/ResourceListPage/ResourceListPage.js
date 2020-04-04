@@ -21,7 +21,7 @@ export default class ResourceListPage extends Component {
         const { resourceList } = this.context;
         const filteredResources = resourceList.filter(resource => resource.category.id.toString() === categoryId);
         return !filteredResources.length
-            ? <p className="black">Currently no resources available. Feel free to add one.</p>
+            ? <p className="black registerPlease">Currently no resources available. Feel free to add one.</p>
             : filteredResources.map((resource) => (
                 <Resource
                     key={resource.id}
@@ -47,7 +47,7 @@ export default class ResourceListPage extends Component {
                         }}>
                              + Add New Resource
                         </Link>
-                    : <p className="black">If you'd like to to add a resource please register an account and sign in.</p>}
+                    : <p className="black registerPlease">If you'd like to to add a resource please register an account and sign in.</p>}
             </div>
             
         );
