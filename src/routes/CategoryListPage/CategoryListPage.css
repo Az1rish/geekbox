@@ -2,6 +2,11 @@
     margin: 0 25px;
 }
 
+.addCat {
+    display: block;
+    width: 45%;
+}
+
 @media screen and (min-width: 800px) {
     .CategoryListPage {
         display: flex;

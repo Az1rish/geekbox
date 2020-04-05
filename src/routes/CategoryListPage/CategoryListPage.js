@@ -25,7 +25,7 @@ class CategoryListPage extends Component {
             <ul className="CategoryListPage">
                 {this.renderCategories()}
                 {TokenService.hasAuthToken() 
-                    ? <Link to='/categories/add' >+ Add New Category</Link> 
+                    ? <Link to='/categories/add' className="addCat">+ Add New Category</Link> 
                     : <p className="black registerPlease">If you'd like to to add a category please register an account and sign in.</p>}
             </ul>
         );
