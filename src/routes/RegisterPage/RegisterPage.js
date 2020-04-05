@@ -6,31 +6,31 @@ import './RegisterPage.css';
 
 class RegisterPage extends Component {
     static propTypes = {
-        history: PropTypes.shape({
-            push: PropTypes.func
-        })
+      history: PropTypes.shape({
+        push: PropTypes.func
+      })
     };
 
     static defaultProps = {
-        history: {
-            push: () => {}
-        }
+      history: {
+        push: () => {}
+      }
     }
 
     handleRegister = () => {
-        const { history } = this.props;
-        history.push('/signin');
+      const { history } = this.props;
+      history.push('/signin');
     }
 
     render() {
-        return (
-            <section className="RegisterPage">
-                <h2>Register</h2>
-                <RegistrationForm
-                    onRegister={this.handleRegister}
-                />
-            </section>
-        );
+      return (
+        <section className="RegisterPage">
+          <h2>Register</h2>
+          <RegistrationForm
+            onRegister={this.handleRegister}
+          />
+        </section>
+      );
     }
 }
 

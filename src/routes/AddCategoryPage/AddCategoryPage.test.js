@@ -7,9 +7,9 @@ test('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-        <AddCategoryPage />
-    </BrowserRouter>, 
-      div
+      <AddCategoryPage />
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

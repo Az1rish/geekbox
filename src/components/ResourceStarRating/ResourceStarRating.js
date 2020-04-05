@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function ResourceStarRating({ rating }) {
@@ -25,3 +26,11 @@ export function Star({ filled }) {
   const library = filled ? 'fas' : 'far';
   return <FontAwesomeIcon className="blue" icon={[library, 'star']} />;
 }
+
+ResourceStarRating.propTypes = {
+  rating: PropTypes.number.isRequired
+};
+
+Star.propTypes = {
+  filled: PropTypes.bool.isRequired
+};

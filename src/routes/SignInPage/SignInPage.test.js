@@ -6,10 +6,10 @@ import SignInPage from './SignInPage';
 test('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-      <BrowserRouter>
-        <SignInPage />
-      </BrowserRouter>, 
-      div
+    <BrowserRouter>
+      <SignInPage />
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

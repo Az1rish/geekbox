@@ -6,30 +6,30 @@ import './SignInPage.css';
 
 class SignInPage extends Component {
     static propTypes = {
-        history: PropTypes.shape({
-            push: PropTypes.func
-        })
+      history: PropTypes.shape({
+        push: PropTypes.func
+      })
     };
 
     static defaultProps = {
-        history: {
-            push: () => {}
-        }
+      history: {
+        push: () => {}
+      }
     };
 
     onSignIn = () => {
-        const { history } = this.props;
-        history.push('/categories');
+      const { history } = this.props;
+      history.push('/categories');
     }
 
     render() {
-        return (
-            <section className='SignInPage'>
-                <h2>Sign In</h2>
-                <SignInForm onSignIn={this.onSignIn} />
-            </section>
-        )
+      return (
+        <section className="SignInPage">
+          <h2>Sign In</h2>
+          <SignInForm onSignIn={this.onSignIn} />
+        </section>
+      );
     }
-};
+}
 
 export default withRouter(SignInPage);

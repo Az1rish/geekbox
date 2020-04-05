@@ -1,22 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import {
+  faStar as fasStar,
+  faBoxOpen,
+  faComments
+} from '@fortawesome/free-solid-svg-icons';
 import FullResource from './FullResource';
 import ResourcePage from '../../routes/ResourcePage/ResourcePage';
 import App from '../App/App';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
-import { 
-    faStar as fasStar,
-    faBoxOpen,
-    faComments
-} from '@fortawesome/free-solid-svg-icons';
 
 library.add(
-    farStar,
-    fasStar,
-    faBoxOpen,
-    faComments
+  farStar,
+  fasStar,
+  faBoxOpen,
+  faComments
 );
 
 test('renders without crashing', () => {
@@ -29,16 +29,16 @@ test('renders without crashing', () => {
     date_created: new Date(),
     categoryId: 1,
     userId: 4
-};
+  };
   ReactDOM.render(
     <BrowserRouter>
       <App>
         <ResourcePage>
-          <FullResource resource={resource}/>
+          <FullResource resource={resource} />
         </ResourcePage>
       </App>
-    </BrowserRouter>, 
-      div
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

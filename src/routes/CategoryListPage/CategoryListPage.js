@@ -7,28 +7,28 @@ import './CategoryListPage.css';
 
 class CategoryListPage extends Component {
     static contextType = GeekBoxContext;
-    
+
     renderCategories() {
-        const { categories } = this.context;
-        return !categories.length
-            ? <p className="black registerPlease">Currently no categories available. Feel free to add one.</p>
-            : categories.map((category) => (
-                <Category
-                    key={category.id}
-                    category={category}
-                />
+      const { categories } = this.context;
+      return !categories.length
+        ? <p className="black registerPlease">Currently no categories available. Feel free to add one.</p>
+        : categories.map((category) => (
+          <Category
+            key={category.id}
+            category={category}
+          />
         ));
     }
-    
+
     render() {
-        return (
-            <ul className="CategoryListPage">
-                {this.renderCategories()}
-                {TokenService.hasAuthToken() 
-                    ? <Link to='/categories/add' className="addCat">+ Add New Category</Link> 
-                    : <p className="black registerPlease">If you'd like to to add a category please register an account and sign in.</p>}
-            </ul>
-        );
+      return (
+        <ul className="CategoryListPage">
+          {this.renderCategories()}
+          {TokenService.hasAuthToken()
+            ? <Link to="/categories/add" className="addCat">+ Add New Category</Link>
+            : <p className="black registerPlease">If you&apos;d like to to add a category please register an account and sign in.</p>}
+        </ul>
+      );
     }
 }
 

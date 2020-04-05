@@ -18,19 +18,16 @@ import ResourcesApiService from '../../services/resources-api-service';
 import './App.css';
 
 class App extends Component {
+  static contextType = GeekBoxContext;
+
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
       hasError: false,
-      isAuthenticated: TokenService.hasAuthToken(),
-      user: {},
-      selected: null,
-      error: null
-    }
+      isAuthenticated: TokenService.hasAuthToken()
+    };
   }
-
-  static contextType = GeekBoxContext;
 
   componentDidMount() {
     this.setCategories();
@@ -42,17 +39,19 @@ class App extends Component {
   }
 
   setCategories = () => {
+    const { setCategories } = this.context;
     CategoriesApiService.getCategories()
       .then((data) => {
-        this.context.setCategories(data)
-      })
+        setCategories(data);
+      });
   }
 
   setResources = () => {
+    const { setResourceList } = this.context;
     ResourcesApiService.getResources()
       .then((data) => {
-        this.context.setResourceList(data)
-      })
+        setResourceList(data);
+      });
   }
 
   toggleAuth = () => {
@@ -64,59 +63,59 @@ class App extends Component {
   render() {
     const { isAuthenticated, hasError } = this.state;
     return (
-        <div className="App">
-          <header className="App__nav">
-            <Nav
-              isAuthenticated={isAuthenticated}
-              toggleAuth={this.toggleAuth} 
+      <div className="App">
+        <header className="App__nav">
+          <Nav
+            isAuthenticated={isAuthenticated}
+            toggleAuth={this.toggleAuth}
+          />
+        </header>
+        <main className="App__main">
+          {hasError && <p className="black">I&apos;m sorry, there appears to be an error.</p>}
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={LandingPage}
             />
-          </header>
-          <main className="App__main">
-            {hasError && <p className="black">I'm sorry, there appears to be an error.</p>}
-            <Switch>
-              <Route
-                exact
-                path='/'
-                component={LandingPage}
-              />
-              <Route
-                path='/register'
-                component={RegisterPage}
-              />
-              <Route
-                path='/signin'
-                component={SignInPage}
-              />
-              <Route
-                exact
-                path='/categories'
-                component={CategoryListPage}
-              />
-              <Route
-                exact
-                path='/categories/add'
-                component={AddCategoryPage}
-              />
-              <Route
-                path='/categories/:categoryId'
-                component={ResourceListPage}
-              />
-              <Route
-                exact
-                path='/resource/add'
-                component={AddResourcePage}
-              />
-              <Route
-                path='/resource/:resourceId'
-                component={ResourcePage}
-              />
-              <Route
-                component={NotFoundPage}
-              />
-            </Switch>
-          </main>
-          <Footer />
-        </div>
+            <Route
+              path="/register"
+              component={RegisterPage}
+            />
+            <Route
+              path="/signin"
+              component={SignInPage}
+            />
+            <Route
+              exact
+              path="/categories"
+              component={CategoryListPage}
+            />
+            <Route
+              exact
+              path="/categories/add"
+              component={AddCategoryPage}
+            />
+            <Route
+              path="/categories/:categoryId"
+              component={ResourceListPage}
+            />
+            <Route
+              exact
+              path="/resource/add"
+              component={AddResourcePage}
+            />
+            <Route
+              path="/resource/:resourceId"
+              component={ResourcePage}
+            />
+            <Route
+              component={NotFoundPage}
+            />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
     );
   }
 }

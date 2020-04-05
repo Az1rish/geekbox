@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -29,10 +30,7 @@
             2,
             "always"
         ],
-        "linebreak-style": [
-            2,
-            "windows"
-        ],
+        "linebreak-style": "off",
         "comma-dangle": [
             2,
             "never"
@@ -48,6 +46,16 @@
         "react/static-property-placement": [
             2,
             "static public field"
-        ]
+        ],
+        "react/prop-types": [
+            2,
+            {
+                "ignore": ["children"]
+            }
+        ],
+        "max-len": "off",
+        "camelcase": "off",
+        "react/no-array-index-key": "off",
+        "no-plusplus": "off"
     }
 }

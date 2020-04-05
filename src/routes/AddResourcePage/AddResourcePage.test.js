@@ -9,13 +9,13 @@ test('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-        <CategoryListPage>
-          <ResourceListPage>
-            <AddResourcePage />
-          </ResourceListPage>
-        </CategoryListPage>
-    </BrowserRouter>, 
-      div
+      <CategoryListPage>
+        <ResourceListPage>
+          <AddResourcePage />
+        </ResourceListPage>
+      </CategoryListPage>
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

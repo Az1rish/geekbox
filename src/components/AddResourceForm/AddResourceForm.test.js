@@ -7,9 +7,9 @@ test('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-        <AddResourceForm />
-    </BrowserRouter>, 
-      div
+      <AddResourceForm />
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

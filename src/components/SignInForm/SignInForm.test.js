@@ -6,10 +6,10 @@ import SignInForm from './SignInForm';
 test('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-      <BrowserRouter>
-        <SignInForm />
-      </BrowserRouter>, 
-      div
+    <BrowserRouter>
+      <SignInForm />
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

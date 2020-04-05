@@ -9,12 +9,12 @@ test('renders without crashing', () => {
     id: 1,
     title: 'JavaScript',
     userId: 1
-}
+  };
   ReactDOM.render(
     <BrowserRouter>
-        <Category category={category}/>
-    </BrowserRouter>, 
-      div
+      <Category category={category} />
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

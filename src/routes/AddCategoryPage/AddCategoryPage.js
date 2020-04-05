@@ -6,30 +6,30 @@ import './AddCategoryPage.css';
 
 class AddCategoryPage extends Component {
     static propTypes = {
-        history: PropTypes.shape({
-            push: PropTypes.func
-        })
+      history: PropTypes.shape({
+        push: PropTypes.func
+      })
     };
 
     static defaultProps = {
-        history: {
-            push: () => {}
-        }
+      history: {
+        push: () => {}
+      }
     };
 
     onAddCategory = () => {
-        const { history } = this.props;
-        history.push('/categories');
+      const { history } = this.props;
+      history.push('/categories');
     }
 
     render() {
-        return (
-            <section className='AddCategoryPage'>
-                <h2>Add Category</h2>
-                <AddCategoryForm onAddCategorySuccess={this.onAddCategory} />
-            </section>
-        )
+      return (
+        <section className="AddCategoryPage">
+          <h2>Add Category</h2>
+          <AddCategoryForm onAddCategorySuccess={this.onAddCategory} />
+        </section>
+      );
     }
-};
+}
 
 export default withRouter(AddCategoryPage);

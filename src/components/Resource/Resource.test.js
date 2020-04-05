@@ -1,22 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import {
+  faStar as fasStar,
+  faBoxOpen,
+  faComments
+} from '@fortawesome/free-solid-svg-icons';
 import Resource from './Resource';
 import ResourceListPage from '../../routes/ResourceListPage/ResourceListPage';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import App from '../App/App';
-import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
-import { 
-    faStar as fasStar,
-    faBoxOpen,
-    faComments
-} from '@fortawesome/free-solid-svg-icons';
 
 library.add(
-    farStar,
-    fasStar,
-    faBoxOpen,
-    faComments
+  farStar,
+  fasStar,
+  faBoxOpen,
+  faComments
 );
 
 test('renders without crashing', () => {
@@ -41,18 +41,18 @@ test('renders without crashing', () => {
       title: 'JavaScript',
       date_created: new Date(),
       userId: 1
-  }
-  }
+    }
+  };
 
   ReactDOM.render(
     <BrowserRouter>
       <App>
         <ResourceListPage location={state}>
-          <Resource resource={resource} user={user}  />
+          <Resource resource={resource} user={user} />
         </ResourceListPage>
       </App>
-    </BrowserRouter>, 
-      div
+    </BrowserRouter>,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });
