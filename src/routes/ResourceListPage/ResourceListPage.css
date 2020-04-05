@@ -1,3 +1,11 @@
 .ResourceListPage {
     padding: 0;
 }
+
+@media screen and (min-width: 800px) {
+    .ResourcesList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}

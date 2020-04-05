@@ -1,3 +1,11 @@
 .registerPlease {
     margin: 0 25px;
 }
+
+@media screen and (min-width: 800px) {
+    .CategoryListPage {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
