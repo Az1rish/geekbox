@@ -73,7 +73,7 @@ class AddCategoryForm extends Component {
               />
             </div>
            
-            <button type="submit">
+            <button type="submit" className="AddCategory">
               Add New Category
             </button>
           </form>

@@ -1,0 +1,32 @@
+.CommentForm {
+    padding: 5px;
+}
+
+#text {
+    width: 80%;
+    border: solid gray 2px;
+    border-radius: 10px;
+    background-color: #d4d4d4;
+    color: #172617;
+}
+
+#rating, option {
+    padding: 2px;
+    border-radius: 10px;
+    color: #172617;
+    background-color: #d4d4d4;
+}
+
+.addComment {
+    padding: 10px;
+    font-weight: bolder;
+    border-radius: 10px;
+    color: white;
+    background-color: #00cc00;
+    margin: 5px;
+    border: 1px solid gray;
+}
+
+.select label {
+    color: #0ff;
+}

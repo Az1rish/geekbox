@@ -3,15 +3,16 @@
 }
 
 .ResourcePage__comment-list {
-    background-color: gray;
-    border: solid black 1px;
+    background-color: #00cc00;
+    border: solid gray 2px;
     border-radius: 10px;
 }
 
 .ResourcePage__comment, .ResourcePage__comment-text svg, .ResourcePage__comment-text, .ResourcePage__comment-user, .ResourceStarRating svg, .ResourceStarRating{
-    background-color: gray;
+    background-color: #00cc00;
 }
 
 .ResourcePage__comment-text {
     text-align: left;
+    padding-left: 5px;
 }

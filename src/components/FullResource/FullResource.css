@@ -1,0 +1,14 @@
+.innerRight {
+    text-align: right;
+    font-size: 0.7rem;
+}
+
+.FullResource__url {
+    color: #0ff;
+}
+
+@media (min-width: 1000px) {
+    .innerRight {
+        font-size: 0.8rem;
+    }
+}

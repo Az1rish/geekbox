@@ -28,7 +28,7 @@ class AddResourceForm extends Component {
         e.preventDefault();
         const { title, url, description } = e.target;
         const { onAddResourceSuccess } = this.props;
-        const { addResource, clearError, setError } = this.context;
+        const { addResource, clearError } = this.context;
         const { category } = this.props.location.state;
 
         const newResource = {
@@ -48,7 +48,9 @@ class AddResourceForm extends Component {
             description.value = ''
             onAddResourceSuccess()
           })
-          .catch(setError)
+          .catch((res) => {
+            this.setState({ error: res.error.message })
+          })
     }
 
     render() {
@@ -59,7 +61,7 @@ class AddResourceForm extends Component {
             onSubmit={this.handleSubmitNewResource}
           >
             <div role="alert">
-              {error && <p className="red">{error}</p>}
+              {error && <p className="black">{error}</p>}
             </div>
             <div className="title">
               <label htmlFor="AddResourceForm__title">
@@ -72,8 +74,8 @@ class AddResourceForm extends Component {
               />
             </div>
             <div className="url">
-              <label htmlFor="AddResourceForm__url">
-                URL
+              <label htmlFor="AddResourceForm__url" className="AddResourceUrl">
+                URL (Web Address, should be formatted like this "http://www.whatever.com")
               </label>
               <input
                 required
@@ -91,7 +93,7 @@ class AddResourceForm extends Component {
                 id="AddResourceForm__description"
               />
             </div>
-            <button type="submit">
+            <button type="submit" className="AddResource">
               Add New Resource
             </button>
           </form>

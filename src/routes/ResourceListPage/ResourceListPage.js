@@ -20,11 +20,13 @@ export default class ResourceListPage extends Component {
         const { categoryId } = this.props.match.params;
         const { resourceList } = this.context;
         const filteredResources = resourceList.filter(resource => resource.category.id.toString() === categoryId);
-        return filteredResources.map((resource) => (
-            <Resource
-                key={resource.id}
-                resource={resource}
-            />
+        return !filteredResources.length
+            ? <p className="black registerPlease">Currently no resources available. Feel free to add one.</p>
+            : filteredResources.map((resource) => (
+                <Resource
+                    key={resource.id}
+                    resource={resource}
+                />
         ));
     }
 
@@ -45,7 +47,7 @@ export default class ResourceListPage extends Component {
                         }}>
                              + Add New Resource
                         </Link>
-                    : null}
+                    : <p className="black registerPlease">If you'd like to to add a resource please register an account and sign in.</p>}
             </div>
             
         );

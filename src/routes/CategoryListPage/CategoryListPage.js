@@ -10,11 +10,13 @@ class CategoryListPage extends Component {
     
     renderCategories() {
         const { categories } = this.context;
-        return categories.map((category) => (
-            <Category
-                key={category.id}
-                category={category}
-            />
+        return !categories.length
+            ? <p className="black registerPlease">Currently no categories available. Feel free to add one.</p>
+            : categories.map((category) => (
+                <Category
+                    key={category.id}
+                    category={category}
+                />
         ));
     }
     
@@ -24,7 +26,7 @@ class CategoryListPage extends Component {
                 {this.renderCategories()}
                 {TokenService.hasAuthToken() 
                     ? <Link to='/categories/add' >+ Add New Category</Link> 
-                    : null}
+                    : <p className="black registerPlease">If you'd like to to add a category please register an account and sign in.</p>}
             </ul>
         );
     }

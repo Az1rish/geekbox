@@ -47,16 +47,16 @@ class CommentForm extends Component {
               name="rating"
               id="rating"
             >
-              <option value="1">1 Star</option>
-              <option value="2">2 Stars</option>
-              <option value="3">3 Stars</option>
-              <option value="4">4 Stars</option>
               <option value="5">5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="2">2 Stars</option>
+              <option value="1">1 Star</option>
             </select>
           </div>
 
-          <button type="submit">
-            Post comment
+          <button className= "addComment" type="submit">
+            Add comment
           </button>
         </form>
         )

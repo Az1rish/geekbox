@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import GeekBoxContext from '../../GeekBoxContext';
@@ -32,10 +33,17 @@ class AddResourcePage extends Component {
     }
 
     render() {
+        const { category } = this.props.location.state;
         return (
             <section className='AddResourcePage'>
                 <h2>Add Resource</h2>
                 <AddResourceForm onAddResourceSuccess={this.onAddResource} />
+                <Link to={{
+                    pathname: `/categories/${category.id}`,
+                    state: {
+                        category
+                    }
+                }}>Return to {category.title} category</Link>
             </section>
         )
     }

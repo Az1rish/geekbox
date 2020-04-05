@@ -5,6 +5,7 @@ import './Category.css';
 export default function Category(props) {
     const { category } = props;
     return (
+        // <section className="Category__List"
         <Link to={{
             pathname: `/categories/${category.id}`,
             state: {

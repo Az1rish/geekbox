@@ -18,18 +18,19 @@ class FullResource extends Component {
             <h2 className="FullResource__heading">
               {resource.title}
             </h2>
-            <a href={resource.url} target="_blank" rel="noopener noreferrer">
-              <h3 className="FullResource__url">
-                Go there now!
-              </h3>
-            </a>
             <p className="FullResource__description">
               {resource.description}
             </p>
-            <p>
-              Posted by
+            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+              <h3 className="FullResource__url">
+                Go to {resource.title} now!
+              </h3>
+            </a>
+            <p className="innerRight">
+              {'~ '}
+              Resource added by
               {' '}
-              {user.first_name}
+              {user.user_name}
               {' '}
               on
               {' '}
@@ -50,13 +51,13 @@ class FullResource extends Component {
           <li key={comment.id} className="ResourcePage__comment">
             <p className="ResourcePage__comment-text">
               <FontAwesomeIcon icon={'comments'} />
-              {' '}
+              {' -  '}
               {comment.comment}
             </p>
             <p className="ResourcePage__comment-user">
               <ResourceStarRating rating={comment.rating} />
               {' - '}
-              {user.first_name}
+              {user.user_name}
             </p>
           </li>
         )}

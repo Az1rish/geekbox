@@ -1,0 +1,28 @@
+.SignInForm input {
+    border: solid #ddd 1px;
+    display: block;
+    font-size: 1.1rem;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: left;
+    width: 80%;
+    border-radius: 4px;
+    background-color: white;
+    color: #172617;
+}
+
+.SignIn {
+    padding: 10px;
+    font-weight: bolder;
+    border-radius: 10px;
+    color: white;
+    background-color: #00cc00;
+    margin: 25px;
+    border: 1px solid gray;
+}
+
+@media (min-width: 1000px) {
+    .SignInForm input {
+        width: 60%;
+    }
+}

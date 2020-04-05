@@ -22,7 +22,7 @@ export default class RegistrationForm extends Component {
         e.preventDefault();
         const { first_name, last_name, user_name, password } = e.target;
         const { onRegister } = this.props;
-        const { clearError, setError } = this.context;
+        const { clearError } = this.context;
         const newUser = {
             first_name: first_name.value,
             last_name: last_name.value,
@@ -38,7 +38,9 @@ export default class RegistrationForm extends Component {
                 password.value = '';
                 onRegister();
             })
-            .catch(setError);
+            .catch((res) => {
+                this.setState({ error: res.error });
+            });
     }
 
     render() {
@@ -49,11 +51,11 @@ export default class RegistrationForm extends Component {
                 onSubmit={this.handleSubmit}
             >
                 <div role='alert'>
-                    {error && <p className="red">{error}</p>}
+                    {error && <p className="black">{error}</p>}
                 </div>
                 <div className="first_name">
                     <label htmlFor="RegistrationForm__first_name">
-                        First Name 
+                            First Name 
                     </label>
                     <input
                         name="first_name"
@@ -95,10 +97,10 @@ export default class RegistrationForm extends Component {
                         required
                     />
                     <p className="passwordInstruction">
-                        Password must contain at least 1 uppercase letter, 1 lower case letter and 1 number, be at least 8 characters long and contain no spaces
+                        Password must contain at least 1 uppercase letter, 1 lower case letter, 1 number and 1 special character (!,@,#,$,%,^ or &), be at least 8 characters long and contain no spaces
                     </p>
                 </div>
-                <button type="submit">
+                <button type="submit" className="register">
                     Register
                 </button>
             </form> 

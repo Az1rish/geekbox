@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import TokenService from '../../services/token-service';
 import AddCategoryPage from '../../routes/AddCategoryPage/AddCategoryPage';
 import AddResourcePage from '../../routes/AddResourcePage/AddResourcePage';
 import CategoryListPage from '../../routes/CategoryListPage/CategoryListPage';
@@ -21,10 +22,11 @@ class App extends Component {
     super(props)
   
     this.state = {
-      //  categories: [],
-      //  resources: [],
-       user: {},
-      //  comments: []
+      hasError: false,
+      isAuthenticated: TokenService.hasAuthToken(),
+      user: {},
+      selected: null,
+      error: null
     }
   }
 
@@ -33,6 +35,10 @@ class App extends Component {
   componentDidMount() {
     this.setCategories();
     this.setResources();
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
   }
 
   setCategories = () => {
@@ -49,13 +55,24 @@ class App extends Component {
       })
   }
 
+  toggleAuth = () => {
+    this.setState({
+      isAuthenticated: TokenService.hasAuthToken()
+    });
+  };
+
   render() {
+    const { isAuthenticated, hasError } = this.state;
     return (
         <div className="App">
           <header className="App__nav">
-            <Nav />
+            <Nav
+              isAuthenticated={isAuthenticated}
+              toggleAuth={this.toggleAuth} 
+            />
           </header>
           <main className="App__main">
+            {hasError && <p className="black">I'm sorry, there appears to be an error.</p>}
             <Switch>
               <Route
                 exact

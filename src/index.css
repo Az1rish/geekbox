@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   text-align: center;
-  background-color: green;
+  background-color: #008000;
   color: white;
 }
   
@@ -30,4 +30,9 @@ ul {
 
 a {
   color: #0ff;
+}
+
+.black {
+  color: #172617;
+  font-weight: bold;
 }
