@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GeekBox
 
-## Available Scripts
+[geekbox.now.sh](https://geekbox.now.sh)
 
-In the project directory, you can run:
+![GeekBox Landing Page](./geekbox-screenshot.png)
 
-### `npm start`
+## API Documentation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### /categories Endpoint
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### / Route
 
-### `npm test`
+GET - Get all categories
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+POST - Post new category (Auth Token Required)
 
-### `npm run build`
+#### /:category_id Route
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+GET - Get single category by ID
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+DELETE - Delete individual category (Auth Token Required) - Not yet available to client, reserved for admin
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+PATCH - Edit category (Auth Token Required) - Not yet available to client, reserved for admin
 
-### `npm run eject`
+### /resources Endpoint
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### / Route
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+GET - Get all resources
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+POST - Post new resource (Auth Token Required)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### /:resource_id Route
 
-## Learn More
+GET - Get single resource by ID (Auth Token Required)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+DELETE - Delete individual resource (Auth Token Required) - Not yet available to client, reserved for admin
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+PATCH - Edit resource (Auth Token Required) - Not yet available to client, reserved for admin
 
-### Code Splitting
+#### /:resource_id/comments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+GET - Get comments for individual resource 
 
-### Analyzing the Bundle Size
+### /comments Endpoint
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+POST - Post comment for current resource (Auth Token Required) - resource_id required in request body
 
-### Making a Progressive Web App
+### /auth Endpoint
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### /signin Route
 
-### Advanced Configuration
+POST - Validates user and logs them in
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### /users Endpoint
 
-### Deployment
+GET - Get list of all users (used for development, not available from front end)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+POST - Adds newly registered user to database
 
-### `npm run build` fails to minify
+## Summary
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This application was created to aggregate educational resources available on the web by category.  It allows the user to optionally register an account and securely sign in.  Once authenticated the user can add categories and resources, as well as comment on and rate individual resources. If user should decline to sign in they can still browse the categories, resources and comments added by other users.
+
+## Technologies
+
+The technologies I've used here on the front end are, mainly React and React Router, with a little help from CSS, FontAwesome and date-fns.
