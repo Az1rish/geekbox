@@ -28,7 +28,7 @@ export default function LandingPage() {
           ? <p className="black">You are already Signed In.</p>
           : (
             <>
-              <p>You can register or sign in by clicking one of these links ( you can try out the site by signing in with user_name: User and password: AAaa11!! )</p>
+              <p>You can register or sign in by clicking one of these links ( you can try out the site by signing in with user_name: User and password: AAaa!!11 )</p>
               <Link to="/register">Register</Link>
               <Link to="/signin">Sign In</Link>
             </>

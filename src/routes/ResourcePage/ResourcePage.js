@@ -37,6 +37,7 @@ export default class ResourcePage extends Component {
       }
     }
 
+    // Request comments for this resource from database
     componentDidMount() {
       const { match } = this.props;
       const { params } = match;

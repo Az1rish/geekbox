@@ -4,8 +4,12 @@
 }
 
 .FullResource__url {
-    color: #0ff;
+    color: #fffacd;
 }
+
+/* .red { */
+    /* color: #8b0000; */
+/* } */
 
 @media (min-width: 1000px) {
     .innerRight {

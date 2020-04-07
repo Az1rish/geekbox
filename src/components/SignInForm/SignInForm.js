@@ -58,7 +58,7 @@ export default class SignInForm extends Component {
           </div>
           <div className="user_name">
             <label htmlFor="SignInForm__user_name">
-                User name
+              User name
               <input
                 required
                 name="user_name"
@@ -68,7 +68,7 @@ export default class SignInForm extends Component {
           </div>
           <div className="password">
             <label htmlFor="SignInForm__password">
-                Password
+              Password
               <input
                 required
                 name="password"
@@ -78,7 +78,7 @@ export default class SignInForm extends Component {
             </label>
           </div>
           <button type="submit" className="SignIn">
-              Sign In
+            Sign In
           </button>
         </form>
       );

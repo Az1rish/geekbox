@@ -25,7 +25,7 @@ class Nav extends Component {
       return (
         <nav className="navBar">
           <Link to="/">
-            <h1>
+            <h1 className="white">
               GeekBox
               {' '}
               <FontAwesomeIcon icon="box-open" />
@@ -35,11 +35,7 @@ class Nav extends Component {
             <Link to="/categories">
               Categories
             </Link>
-            {' | '}
-            <Link to="/register">
-              Register
-            </Link>
-            {' | '}
+            {' | '}  
             {TokenService.hasAuthToken()
               ? (
                 <Link
@@ -50,9 +46,15 @@ class Nav extends Component {
                 </Link>
               )
               : (
-                <Link to="/signin">
-                  Sign In
-                </Link>
+                <>
+                  <Link to="/register">
+                    Register
+                  </Link>
+                  {' | '}
+                  <Link to="/signin">
+                    Sign In
+                  </Link>
+                </>
               )}
           </span>
         </nav>

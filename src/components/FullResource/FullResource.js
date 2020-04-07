@@ -71,12 +71,13 @@ class FullResource extends Component {
 
   ResourceComments = (comments = []) => (
     <ul className="ResourcePage__comment-list">
+      <h3 className="ResourcePage__comments-title">Comments and Reviews</h3>
       {comments.map((comment) => {
         const { user } = comment;
         return (
           <li key={comment.id} className="ResourcePage__comment">
             <p className="ResourcePage__comment-text">
-              <FontAwesomeIcon icon="comments" />
+              <FontAwesomeIcon  icon="comments" />
               {' -  '}
               {comment.comment}
             </p>

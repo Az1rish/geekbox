@@ -3,16 +3,22 @@
 }
 
 .ResourcePage__comment-list {
-    background-color: #00cc00;
+    background-color: #3dcc3d;
     border: solid gray 2px;
     border-radius: 10px;
 }
 
-.ResourcePage__comment, .ResourcePage__comment-text svg, .ResourcePage__comment-text, .ResourcePage__comment-user, .ResourceStarRating svg, .ResourceStarRating{
-    background-color: #00cc00;
+.ResourcePage__comment, .ResourcePage__comment-text svg, .ResourcePage__comment-text, .ResourcePage__comment-user, .ResourceStarRating svg, .ResourceStarRating, .ResourcePage__comments-title {
+    background-color: #3dcc3d;
+    color: #8b0000;
 }
 
 .ResourcePage__comment-text {
     text-align: left;
     padding-left: 5px;
+}
+
+.ResourcePage__comment-user {
+    text-align: left;
+    padding-left: 25px;
 }

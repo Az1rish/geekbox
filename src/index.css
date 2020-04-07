@@ -2,7 +2,6 @@
   box-sizing: border-box;
   text-align: center;
   background-color: #008000;
-  color: white;
 }
   
 body {
@@ -12,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
 }
 
 code {
@@ -29,10 +29,10 @@ ul {
 }
 
 a {
-  color: #0ff;
+  color: #fffacd;
 }
 
 .black {
-  color: #172617;
+  color: #000036;
   font-weight: bold;
 }

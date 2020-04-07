@@ -16,7 +16,7 @@ export default function Category(props) {
       className="Category__link"
     >
       <li className="Category">
-        <h2 className="Category__title">
+        <h2 className="Category__title white">
           {category.title}
         </h2>
       </li>

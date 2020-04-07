@@ -84,7 +84,7 @@ class Resource extends Component {
         }}
         className="resource"
       >
-        <div className="resource__details">
+        <div className="resource__details white">
           <div className="resource__text">
             <h2 className="resource__heading">
               {resource.title}

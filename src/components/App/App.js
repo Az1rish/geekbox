@@ -29,6 +29,7 @@ class App extends Component {
     };
   }
 
+  // Request assets from the database
   componentDidMount() {
     this.setCategories();
     this.setResources();
