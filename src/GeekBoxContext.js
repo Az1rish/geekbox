@@ -107,12 +107,12 @@ export class GeekBoxProvider extends Component {
 
   addComment = (comment) => {
     const { comments } = this.state;
-    const { resource } = comments[0];
+    const { resource } = comments[comments.length - 1];
     this.setComments([
       ...comments,
       comment
     ]);
-    this.updateResource(resource)
+    this.updateResource(resource);
   }
 
   setUser = (user) => {

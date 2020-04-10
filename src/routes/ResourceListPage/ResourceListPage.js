@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import GeekBoxContext from '../../GeekBoxContext';
 import TokenService from '../../services/token-service';
 import Resource from '../../components/Resource/Resource';
+import ResourceApiService from '../../services/resources-api-service';
 import './ResourceListPage.css';
 
 export default class ResourceListPage extends Component {
@@ -39,6 +40,18 @@ export default class ResourceListPage extends Component {
         }
       }
 
+      // get resources so resources and comments update properly
+      componentDidMount() {
+        this.getResources();
+      }
+
+      getResources = () => {
+        const { setResourceList } = this.context;
+        ResourceApiService.getResources()
+          .then((data) => {
+            setResourceList(data);
+          });
+      }
 
       renderResources() {
         const { match } = this.props;
