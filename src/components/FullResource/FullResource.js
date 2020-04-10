@@ -77,7 +77,7 @@ class FullResource extends Component {
         return (
           <li key={comment.id} className="ResourcePage__comment">
             <p className="ResourcePage__comment-text">
-              <FontAwesomeIcon  icon="comments" />
+              <FontAwesomeIcon icon="comments" />
               {' -  '}
               {comment.comment}
             </p>

@@ -88,7 +88,7 @@ export class GeekBoxProvider extends Component {
         title: resource.title,
         url: resource.url,
         description: resource.description,
-        numOfComments: resource.numOfComments,
+        numOfComments: resource.numOfComments + 1,
         avgCommentRating: resource.avgCommentRating
       }
     });
@@ -107,10 +107,12 @@ export class GeekBoxProvider extends Component {
 
   addComment = (comment) => {
     const { comments } = this.state;
+    const { resource } = comments[0];
     this.setComments([
       ...comments,
       comment
     ]);
+    this.updateResource(resource)
   }
 
   setUser = (user) => {
