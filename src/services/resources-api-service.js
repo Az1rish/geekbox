@@ -47,16 +47,6 @@ const ResourcesApiService = {
         ? res.json().then((e) => Promise.reject(e))
         : res.json()));
   },
-  // getComments() {
-  // return fetch(`${config.API_ENDPOINT}/comments`, {
-  // headers: {
-  // 'content-type': 'application/json'
-  // }
-  // })
-  // .then((res) => ((!res.ok)
-  // ? res.json().then((e) => Promise.reject(e))
-  // : res.json()));
-  // },
   postComment(resourceId, comment, rating) {
     return fetch(`${config.API_ENDPOINT}/comments`, {
       method: 'POST',
