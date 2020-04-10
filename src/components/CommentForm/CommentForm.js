@@ -24,9 +24,10 @@ class CommentForm extends Component {
     e.preventDefault();
     const { text, rating } = e.target;
     const { resource } = this.props;
-    const { addComment, setError } = this.context;
+    const { addComment, setError, updateResource } = this.context;
     ResourcesApiService.postComment(resource.id, text.value, Number(rating.value))
       .then(addComment)
+      .then(updateResource)
       .then(() => {
         text.value = '';
       })

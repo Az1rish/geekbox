@@ -87,7 +87,9 @@ export class GeekBoxProvider extends Component {
         id: resource.id,
         title: resource.title,
         url: resource.url,
-        description: resource.description
+        description: resource.description,
+        numOfComments: resource.numOfComments,
+        avgCommentRating: resource.avgCommentRating
       }
     });
   }

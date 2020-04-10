@@ -68,6 +68,8 @@ export default class ResourcePage extends Component {
     }
 
     render() {
+      console.log('props', this.props);
+      console.log('contextResource', this.context)
       const { match, location } = this.props;
       const { params } = match;
       const { resourceId } = params;
